@@ -1,0 +1,112 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="shortcut icon" type="image/png" href="https://stc-chat.zdn.vn/favicon.ico">
+  <script src="jquery-3.1.1.min.js"></script>
+  <title>zPlayer Demo - Video</title>
+  <style>
+    video::cue {
+      font-weight: bold;
+      color: white;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      background: transparent;
+      font-size: 18px;
+    }
+  </style>
+  <style>
+    td {
+      -webkit-transition: width 400ms, background-color 400ms linear;
+      -moz-transition: width 400ms, background-color 400ms linear;
+      -o-transition: width 400ms, background-color 400ms linear;
+      -ms-transition: width 400ms, background-color 400ms linear;
+      transition: width 400ms, background-color 400ms linear;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="container">
+
+    <h1>zPlayer.js - Ad Testing</h1>
+    <div class="main">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="output">
+            <h2>Video</h2>
+            <div id="zplayerjs-wrapper" class="player"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </section>
+  <footer class="footer"></footer>
+
+  <link rel="stylesheet" href="html5vast.css" type="text/css" />
+  <script type="text/javascript" charset="utf-8" src="dist/zplayer-mobile.min.js"></script>
+  <script>
+    var playerContainer = document.getElementById("zplayerjs-wrapper");
+
+    var player = new zPlayer.Player({
+      // Source
+    playlist: [
+      {
+        source: "http://dev.hls-player.zapps.vn/zplayer/source/demo.mp4"
+      }
+    ],
+
+    // Size
+    height: 600,
+    width: 800,
+
+    // Type
+    playerType: 'song',
+    mimeType: 'video/mp4',
+
+    // Ads
+    ads: {
+      interruptSource: 'https://api.adtimaserver.vn/zad/videoad?zid=1229051564232505663',
+      nonInterruptSource: 'https://api.adtimaserver.vn/zad/videoad?zid=1229051564232505663'
+    },
+
+    // Poster
+    poster: 'https://img.youtube.com/vi/3HbKnQxd0_E/hqdefault.jpg',
+    posterPlay: true,
+
+    // Volume
+    volume: 100,
+    muted: true,
+
+    // Features
+    pauseOnClick: true,
+    autoPlay: false,
+    alwaysShowControl: false,
+    playInline: true,
+    offTracking: true
+    });
+
+    player.on(zPlayer.Events.PLAYER_FULLSCREEN, function () {
+      console.log("PLAYER_FULLSCREEN!");
+    });
+
+    player.on(zPlayer.Events.PLAYER_PLAYITEM, function () {
+      console.log("PLAYER_PLAYITEM!")
+    });
+
+    player.on(zPlayer.Events.PLAYER_ERROR, function () {
+      console.log("ERROR!")
+    });
+
+    player.attachTo(playerContainer);
+
+  </script>
+</body>
+
+</html>
+
