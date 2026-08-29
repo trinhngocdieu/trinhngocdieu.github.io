@@ -45,6 +45,7 @@
     'uniform float u_time; uniform float u_aspect;',
     'uniform vec2 u_wind; uniform float u_noiseScale; uniform float u_noiseSpeed; uniform float u_noiseAmp;',
     'uniform vec2 u_mouse; uniform vec2 u_mouseVel; uniform float u_mouseOn;',
+    'uniform vec4 u_gust; uniform vec2 u_gustDir;',
     'vec2 curl(vec3 p){ float e=0.02;',
     ' float n1=snoise(p+vec3(0.0,e,0.0)); float n2=snoise(p-vec3(0.0,e,0.0));',
     ' float n3=snoise(p+vec3(e,0.0,0.0)); float n4=snoise(p-vec3(e,0.0,0.0));',
@@ -55,12 +56,22 @@
     ' vec2 m=vec2(u_mouse.x*u_aspect,u_mouse.y); vec2 d=w-m; float r2=dot(d,d);',
     ' float g=exp(-r2/(2.0*0.11*0.11))*u_mouseOn;',
     ' v+=g*(u_mouseVel*1.6+vec2(-d.y,d.x)*0.9);',
+    ' vec2 gd=w-u_gust.xy; float gg=exp(-dot(gd,gd)/(2.0*u_gust.w*u_gust.w))*u_gust.z;',
+    ' v+=gg*(u_gustDir+vec2(-gd.y,gd.x)*0.6);',
     ' return v; }'
   ].join('\n');
 
   var QUAD_VS = 'precision mediump float; attribute vec2 a_pos; varying vec2 v_uv; void main(){ v_uv=a_pos; gl_Position=vec4(a_pos*2.0-1.0,0.0,1.0); }';
 
   var FADE_FS = 'precision mediump float; uniform sampler2D u_tex; uniform float u_opacity; uniform float u_sub; varying vec2 v_uv; void main(){ vec4 c=texture2D(u_tex,v_uv); gl_FragColor=max(c*u_opacity-u_sub,0.0); }';
+
+  var COMP_FS = [
+    'precision mediump float; uniform sampler2D u_tex; uniform float u_warp; uniform float u_aspect; varying vec2 v_uv;',
+    NOISE,
+    'void main(){ vec2 p=vec2(v_uv.x*u_aspect,v_uv.y)*7.0;',
+    ' vec2 o=vec2(snoise(vec3(p,0.0)),snoise(vec3(p+vec2(31.7,11.3),0.0)))*u_warp;',
+    ' gl_FragColor=texture2D(u_tex,v_uv+o); }'
+  ].join('\n');
 
   var UPDATE_FS = [
     'precision highp float;',
@@ -84,14 +95,14 @@
 
   var DRAW_VS = [
     'precision highp float;',
-    'attribute float a_index; uniform sampler2D u_particles; uniform float u_res; uniform float u_pointSize;',
+    'attribute float a_index; uniform sampler2D u_particles; uniform float u_res; uniform float u_pointSize; uniform mediump float u_speedRef;',
     'varying float v_speed;',
     NOISE, FIELD,
     'void main(){',
     ' vec4 c=texture2D(u_particles,vec2(fract(a_index/u_res),floor(a_index/u_res)/u_res));',
     ' vec2 pos=vec2(c.r/255.0+c.b,c.g/255.0+c.a);',
     ' v_speed=length(field(pos));',
-    ' gl_PointSize=u_pointSize;',
+    ' gl_PointSize=u_pointSize*(0.7+1.0*smoothstep(u_speedRef*1.1,u_speedRef*2.0,v_speed));',
     ' gl_Position=vec4(pos*2.0-1.0,0.0,1.0);',
     '}'
   ].join('\n');
@@ -103,7 +114,8 @@
     'void main(){',
     ' float t=smoothstep(u_speedRef*1.1,u_speedRef*2.0,v_speed);',
     ' vec3 c=mix(u_color,u_accent,t);',
-    ' float a=u_alpha*(0.55+0.45*t);',
+    ' float dab=smoothstep(0.5,0.1,length(gl_PointCoord-0.5));',
+    ' float a=u_alpha*(0.55+0.45*t)*dab;',
     ' gl_FragColor=vec4(c*a,a);',
     '}'
   ].join('\n');
@@ -143,9 +155,9 @@
     if (t) gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, t, 0);
   }
 
-  var fadeP, updateP, drawP;
-  try { fadeP = program(QUAD_VS, FADE_FS); updateP = program(QUAD_VS, UPDATE_FS); drawP = program(DRAW_VS, DRAW_FS); }
-  catch (e) { canvas.remove(); return; }
+  var fadeP, updateP, drawP, compP;
+  try { fadeP = program(QUAD_VS, FADE_FS); updateP = program(QUAD_VS, UPDATE_FS); drawP = program(DRAW_VS, DRAW_FS); compP = program(QUAD_VS, COMP_FS); }
+  catch (e) { if (window.console) console.error('wind field disabled:', e.message); canvas.remove(); return; }
 
   var quad = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, quad);
@@ -156,15 +168,16 @@
   var W = 0, H = 0, dpr = 1, res = 0, count = 0;
   var pTex0, pTex1, indexBuf, screenA, screenB;
   var wind = { dir: 225, speed: 10 };        // meteorological "from" degrees, km/h
-  var windVec = [0, 0], noiseAmp = 0.07, noiseScale = 1.25, noiseSpeed = 0.06, drop = 0.004, fade = 0.962, speedRef = 0.05;
+  var windVec = [0, 0], noiseAmp = 0.07, noiseScale = 1.25, noiseSpeed = 0.06, drop = 0.004, fade = 0.968, speedRef = 0.05;
   var color = [0.05, 0.1, 0.18], accent = [0.9, 0.33, 0.1], alpha = 0.42;
   var mouse = { x: -10, y: -10, vx: 0, vy: 0, on: 0, px: 0, py: 0, t: 0 };
+  var gust = { x: -9, y: -9, s: 0, r: 0.28, born: 0, life: 0, next: 3, dir: [0, 0] };
   var enabled = true, running = false, hidden = false, raf = 0, last = 0, time = 0, lost = false;
 
   function fromWind() {
     var phi = wind.dir * Math.PI / 180;
     var s = Math.min(wind.speed, 45) / 45;                 // 0..1
-    var mag = 0.035 + s * 0.11;                            // uv units / second
+    var mag = 0.045 + s * 0.11;                            // uv units / second
     windVec = [-Math.sin(phi) * mag, -Math.cos(phi) * mag]; // toward-direction; x east, y north (gl y up)
     noiseAmp = 0.03 + s * 0.05;
     noiseSpeed = 0.04 + s * 0.08;
@@ -177,7 +190,7 @@
     W = Math.floor(w * dpr); H = Math.floor(h * dpr);
     canvas.width = W; canvas.height = H;
     var density = (window.matchMedia('(hover: hover)').matches ? 1 : 0.7);
-    res = Math.max(24, Math.min(64, Math.round(Math.sqrt(w * h / 470 * density))));
+    res = Math.max(24, Math.min(64, Math.round(Math.sqrt(w * h / 560 * density))));
     count = res * res;
     var state = new Uint8Array(count * 4);
     for (var i = 0; i < state.length; i++) state[i] = Math.floor(Math.random() * 256);
@@ -203,6 +216,29 @@
     gl.uniform2f(P.u.u_mouse, mouse.x, mouse.y);
     gl.uniform2f(P.u.u_mouseVel, mouse.vx, mouse.vy);
     gl.uniform1f(P.u.u_mouseOn, mouse.on);
+    gl.uniform4f(P.u.u_gust, gust.x, gust.y, gust.s, gust.r);
+    gl.uniform2f(P.u.u_gustDir, gust.dir[0], gust.dir[1]);
+  }
+
+  // Ambient gusts: a soft pressure front that rides the wind across the screen now and then.
+  function gusts(dt) {
+    var s = Math.min(wind.speed, 45) / 45;
+    if (gust.life > 0) {
+      var k = (time - gust.born) / gust.life;
+      if (k >= 1) { gust.life = 0; gust.s = 0; gust.next = time + 5 + Math.random() * 9 - s * 4; }
+      else {
+        gust.s = Math.sin(k * Math.PI) * (0.35 + s * 0.6);
+        var m = Math.hypot(windVec[0], windVec[1]) || 0.04, ux = windVec[0] / m, uy = windVec[1] / m;
+        gust.x += ux * (0.22 + s * 0.2) * dt; gust.y += uy * (0.22 + s * 0.2) * dt;
+      }
+    } else if (time > gust.next) {
+      var mag = Math.hypot(windVec[0], windVec[1]) || 0.04, ux2 = windVec[0] / mag, uy2 = windVec[1] / mag, asp = W / H;
+      // start upwind of the centre, offset sideways at random
+      var side = (Math.random() - 0.5) * 1.2;
+      gust.x = asp * 0.5 - ux2 * 0.9 + (-uy2) * side; gust.y = 0.5 - uy2 * 0.9 + ux2 * side;
+      gust.dir = [ux2 * (0.25 + s * 0.35), uy2 * (0.25 + s * 0.35)];
+      gust.born = time; gust.life = 2.2 + Math.random() * 1.6; gust.s = 0;
+    }
   }
 
   function drawQuad(P) {
@@ -231,7 +267,7 @@
     gl.vertexAttribPointer(drawP.a.a_index, 1, gl.FLOAT, false, 0, 0);
     bindTex(pTex0, 1); gl.uniform1i(drawP.u.u_particles, 1);
     gl.uniform1f(drawP.u.u_res, res);
-    gl.uniform1f(drawP.u.u_pointSize, 1.6 * dpr);
+    gl.uniform1f(drawP.u.u_pointSize, 2.6 * dpr);
     gl.uniform3f(drawP.u.u_color, color[0], color[1], color[2]);
     gl.uniform3f(drawP.u.u_accent, accent[0], accent[1], accent[2]);
     gl.uniform1f(drawP.u.u_alpha, alpha);
@@ -244,10 +280,10 @@
     bindFB(null);
     gl.viewport(0, 0, W, H);
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.useProgram(fadeP.p);
-    bindTex(screenB, 0); gl.uniform1i(fadeP.u.u_tex, 0);
-    gl.uniform1f(fadeP.u.u_opacity, 1); gl.uniform1f(fadeP.u.u_sub, 0);
-    drawQuad(fadeP);
+    gl.useProgram(compP.p);
+    bindTex(screenB, 0); gl.uniform1i(compP.u.u_tex, 0);
+    gl.uniform1f(compP.u.u_warp, 0.0022); gl.uniform1f(compP.u.u_aspect, W / H);
+    drawQuad(compP);
     var t = screenA; screenA = screenB; screenB = t;
 
     // 3. advect particles
@@ -269,6 +305,7 @@
     if (!running) return;
     var dt = last ? Math.min((now - last) / 1000, 0.05) : 1 / 60;
     last = now;
+    gusts(dt);
     // cursor velocity decay
     mouse.vx *= 0.88; mouse.vy *= 0.88;
     if (mouse.on > 0 && now - mouse.t > 1200) mouse.on = Math.max(0, mouse.on - dt * 1.2);

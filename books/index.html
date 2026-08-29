@@ -25,13 +25,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@700&text=鄭玉妙印札語律風振込東京作品本近況郵便はがき迷子こんにちは茶&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css">
-<script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);if(localStorage.getItem('wind')==='off')document.documentElement.setAttribute('data-field','off');}catch(e){}})();</script>
+<script>(function(){try{var t=localStorage.getItem('theme');if(!t){var d=new Date(Date.now()+324e5),N=Math.floor((Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate())-Date.UTC(d.getUTCFullYear(),0,0))/864e5),B=2*Math.PI*(N-81)/364,q=9.87*Math.sin(2*B)-7.53*Math.cos(B)-1.5*Math.sin(B),dc=.4091*Math.sin(2*Math.PI*(284+N)/365),m=d.getUTCHours()*60+d.getUTCMinutes(),H=(m-(720-18.6-q))/4*Math.PI/180,la=.6227,el=Math.asin(Math.sin(la)*Math.sin(dc)+Math.cos(la)*Math.cos(dc)*Math.cos(H))*57.3;t=el<-6?'dark':'light'}document.documentElement.setAttribute('data-theme',t);if(localStorage.getItem('wind')==='off')document.documentElement.setAttribute('data-field','off');}catch(e){}})();</script>
 <!-- Google AdSense (kept from the previous site; remove this line to drop it) -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9096418035432957" crossorigin="anonymous"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="ink" x="-6%" y="-6%" width="112%" height="112%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<div class="sky" aria-hidden="true"></div>
 <canvas id="wind" aria-hidden="true"></canvas>
 <div class="ruler ruler-corner" aria-hidden="true"></div>
 <div class="ruler ruler-x" aria-hidden="true"><i class="marker"></i></div>

@@ -12,22 +12,72 @@
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   };
 
-  /* ---------- theme ---------- */
+  /* ---------- the Tokyo sun: drives the default theme, the sky glow and the sun arc ---------- */
+  var LAT = 35.6762 * Math.PI / 180, LON = 139.6503;
+  function solar(date) {
+    var d = new Date((date || new Date()).getTime() + 9 * 3600e3);            // JST, read through the UTC getters
+    var N = Math.floor((Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - Date.UTC(d.getUTCFullYear(), 0, 0)) / 864e5);
+    var B = 2 * Math.PI * (N - 81) / 364, eot = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B);
+    var decl = 0.4091 * Math.sin(2 * Math.PI * (284 + N) / 365);
+    var mins = d.getUTCHours() * 60 + d.getUTCMinutes() + d.getUTCSeconds() / 60;
+    var noon = 720 - (LON - 135) * 4 - eot;
+    var H = (mins - noon) / 4 * Math.PI / 180;
+    var elev = Math.asin(Math.sin(LAT) * Math.sin(decl) + Math.cos(LAT) * Math.cos(decl) * Math.cos(H)) * 180 / Math.PI;
+    var cosH0 = (Math.sin(-0.833 * Math.PI / 180) - Math.sin(LAT) * Math.sin(decl)) / (Math.cos(LAT) * Math.cos(decl));
+    var H0 = Math.acos(Math.max(-1, Math.min(1, cosH0))) * 180 / Math.PI * 4;
+    return { elev: elev, sunrise: noon - H0, sunset: noon + H0, now: mins };
+  }
+  function hhmm(m) { m = ((m % 1440) + 1440) % 1440; var h = Math.floor(m / 60), mm = Math.round(m % 60); if (mm === 60) { h = (h + 1) % 24; mm = 0; } return (h < 10 ? '0' : '') + h + ':' + (mm < 10 ? '0' : '') + mm; }
+
+  /* ---------- theme: follows Tokyo's daylight until you choose ---------- */
   function applyTheme(t) {
     root.setAttribute('data-theme', t);
     var m = $('meta[name="theme-color"]:not([media])');
     if (m) m.setAttribute('content', t === 'dark' ? '#0a1424' : '#edf1f5');
     $$('.theme-btn').forEach(function (b) { b.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false'); });
     if (window.WIND) window.WIND.setTheme();
+    sky();
   }
+  function autoTheme() { if (store.get('theme')) return; var t = solar().elev < -6 ? 'dark' : 'light'; if (root.getAttribute('data-theme') !== t) applyTheme(t); }
   function toggleTheme() {
     var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     store.set('theme', t); applyTheme(t);
+    $$('.theme-btn').forEach(function (b) { b.title = 'Theme: your choice'; });
   }
-  $$('.theme-btn').forEach(function (b) { b.addEventListener('click', toggleTheme); });
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-    if (!store.get('theme')) applyTheme(e.matches ? 'dark' : 'light');
-  });
+  $$('.theme-btn').forEach(function (b) { b.addEventListener('click', toggleTheme); b.title = store.get('theme') ? 'Theme: your choice' : 'Theme follows Tokyo’s daylight — click to choose'; });
+  setInterval(autoTheme, 60000);
+
+  /* ---------- sky glow, daylight readout, sun arc ---------- */
+  var skyEl = $('.sky');
+  function sky() {
+    var s = solar(), e = s.elev, dark = root.getAttribute('data-theme') === 'dark';
+    var f = (s.now - s.sunrise) / (s.sunset - s.sunrise);                   // 0 at sunrise … 1 at sunset
+    var col, a;
+    if (e > 12) { col = '255,214,150'; a = 0.2; }
+    else if (e > -6) { col = '255,122,60'; a = 0.32; }
+    else if (e > -12) { col = '150,90,170'; a = 0.16; }
+    else { col = '70,110,190'; a = 0.1; }
+    if (dark) a *= 0.7;
+    if (skyEl) {
+      skyEl.style.setProperty('--sun-x', (88 - 76 * Math.max(-0.15, Math.min(1.15, f))).toFixed(1) + '%');
+      skyEl.style.setProperty('--sun-y', (100 - 92 * Math.max(0, Math.min(1, (e + 8) / 78))).toFixed(1) + '%');
+      skyEl.style.setProperty('--sun-color', 'rgb(' + col + ')');
+      skyEl.style.setProperty('--sun-a', a.toFixed(2));
+    }
+    var label = e > 0 ? 'Sun up · sets ' + hhmm(s.sunset) : (e > -6 ? 'Twilight' : 'Sun down · rises ' + hhmm(s.sunrise));
+    if (e > 0 && e < 8) label = 'Golden hour · ' + (f < 0.5 ? 'rose ' + hhmm(s.sunrise) : 'sets ' + hhmm(s.sunset));
+    setText('[data-daylight]', label);
+    $$('.sunarc').forEach(function (svg) {
+      var th = Math.PI * (1 - Math.max(-0.35, Math.min(1.35, f)));
+      var x = 160 + 100 * Math.cos(th), y = e < -0.833 ? 116 : 110 - 100 * Math.sin(th);   // below the horizon: rest just under the line
+      var sun = svg.querySelector('.sun'); if (sun) sun.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ')');
+      svg.classList.toggle('night', e < -0.833);
+      var r = svg.querySelector('.t-rise'), st = svg.querySelector('.t-set');
+      if (r) r.textContent = '↑ ' + hhmm(s.sunrise);
+      if (st) st.textContent = '↓ ' + hhmm(s.sunset);
+    });
+  }
+  sky(); setInterval(sky, 60000);
 
   /* ---------- wind toggle ---------- */
   function setWindEnabled(on, persist) {
@@ -96,8 +146,11 @@
   var COMPASS = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
 
   function setText(sel, v) { $$(sel).forEach(function (n) { n.textContent = v; }); }
-  function applyWind(cur, live) {
+  var live = { dir: 225, speed: 10, cur: null, isLive: false };
+  function applyWind(cur, isLive) {
     var spd = Math.round(cur.wind_speed_10m), dir = Math.round(cur.wind_direction_10m);
+    live.dir = dir; live.speed = spd; live.cur = cur; live.isLive = isLive;
+    var manual = !!$('.rose.manual');
     var b = 0; while (b < BEAUFORT.length - 1 && spd > BEAUFORT[b][0]) b++;
     var comp = COMPASS[Math.round(dir / 22.5) % 16];
     setText('[data-wind]', spd + ' km/h');
@@ -107,7 +160,8 @@
     setText('[data-bf-n]', 'F' + b);
     setText('[data-bf-name]', BEAUFORT[b][1]);
     setText('[data-bf-desc]', BEAUFORT[b][2]);
-    setText('[data-bf-note]', live ? 'Live — this page’s breeze follows Tokyo’s wind' : 'Live wind unavailable — showing a default breeze');
+    setText('[data-bf-note]', isLive ? 'Live — this page’s breeze follows Tokyo’s wind' : 'Live wind unavailable — showing a default breeze');
+    if (manual) return;
     $$('.rose').forEach(function (r) { r.style.setProperty('--deg', dir + 'deg'); });
     $$('[data-rose-dir]').forEach(function (n) { n.textContent = comp + ' ' + dir + '°'; });
     if (window.WIND) window.WIND.setWind(dir, spd);
@@ -195,17 +249,75 @@
     }, 2600);
   });
 
-  /* ---------- compass photo: slight parallax ---------- */
+  /* ---------- compass: parallax, and drag the knob to steer the wind yourself ---------- */
   var rose = $('.rose');
-  if (rose && fine && !reduce) {
-    var photo = $('.photo', rose);
-    rose.addEventListener('pointermove', function (e) {
+  if (rose) {
+    var photo = $('.photo', rose), knob = $('.knob', rose), manualTimer = 0, dragging = false;
+    if (fine && !reduce && photo) {
+      rose.addEventListener('pointermove', function (e) {
+        if (dragging) return;
+        var r = rose.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        photo.style.setProperty('--px', (x * 10).toFixed(1) + 'px'); photo.style.setProperty('--py', (y * 10).toFixed(1) + 'px');
+      });
+      rose.addEventListener('pointerleave', function () { photo.style.setProperty('--px', '0px'); photo.style.setProperty('--py', '0px'); });
+    }
+    var angleFrom = function (e) {
       var r = rose.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      photo.style.setProperty('--px', (x * 10).toFixed(1) + 'px'); photo.style.setProperty('--py', (y * 10).toFixed(1) + 'px');
-    });
-    rose.addEventListener('pointerleave', function () { photo.style.setProperty('--px', '0px'); photo.style.setProperty('--py', '0px'); });
+      return (Math.atan2(e.clientX - (r.left + r.width / 2), -(e.clientY - (r.top + r.height / 2))) * 180 / Math.PI + 360) % 360;
+    };
+    var steer = function (deg) {
+      rose.classList.add('manual'); rose.style.setProperty('--deg', deg.toFixed(1) + 'deg');
+      setText('[data-rose-dir]', COMPASS[Math.round(deg / 22.5) % 16] + ' ' + Math.round(deg) + '°');
+      if (window.WIND) window.WIND.setWind(deg, live.speed);
+    };
+    var release = function () {
+      if (!dragging) return;
+      dragging = false; rose.classList.remove('dragging'); clearTimeout(manualTimer);
+      manualTimer = setTimeout(function () { rose.classList.remove('manual'); if (live.cur) applyWind(live.cur, live.isLive); }, 8000);
+    };
+    var begin = function (e) {
+      if (e.button && e.button !== 0) return;
+      dragging = true; rose.classList.add('dragging'); clearTimeout(manualTimer); steer(angleFrom(e));
+      if (rose.setPointerCapture) { try { rose.setPointerCapture(e.pointerId); } catch (x) {} }
+      e.preventDefault();
+    };
+    (fine ? rose : (knob || rose)).addEventListener('pointerdown', begin);
+    rose.addEventListener('pointermove', function (e) { if (dragging) steer(angleFrom(e)); });
+    window.addEventListener('pointerup', release); window.addEventListener('pointercancel', release);
   }
+
+  /* ---------- a small weather vane keeps the cursor company ---------- */
+  if (fine && !reduce) {
+    var vane = d.createElement('div'); vane.className = 'vane'; vane.setAttribute('aria-hidden', 'true');
+    vane.innerHTML = '<svg viewBox="0 0 24 24"><path class="tail" d="M12 22V7"/><path class="head" d="M12 2 7.5 9h9z"/></svg>';
+    d.body.appendChild(vane);
+    var vx = -100, vy = -100, tx = -100, ty = -100, rot = 0, trot = 0, lastMove = 0, vOn = false, vraf = 0, lx = 0, ly = 0;
+    var vloop = function (now) {
+      vraf = 0;
+      vx += (tx - vx) * 0.22; vy += (ty - vy) * 0.22;
+      if (now - lastMove > 700) trot = live.dir;                       // at rest the vane swings into the wind
+      var dr = ((trot - rot + 540) % 360) - 180; rot += dr * 0.12;
+      vane.style.transform = 'translate(' + vx.toFixed(1) + 'px,' + vy.toFixed(1) + 'px) rotate(' + rot.toFixed(1) + 'deg)';
+      if (vOn) vraf = requestAnimationFrame(vloop);
+    };
+    window.addEventListener('pointermove', function (e) {
+      var nx = e.clientX + 18, ny = e.clientY + 18, dx = nx - lx, dy = ny - ly;
+      if (dx * dx + dy * dy > 16) { trot = (Math.atan2(dx, -dy) * 180 / Math.PI + 360) % 360; lx = nx; ly = ny; lastMove = performance.now(); }
+      tx = nx; ty = ny;
+      if (!vOn) { vOn = true; vane.classList.add('on'); }
+      if (!vraf) vraf = requestAnimationFrame(vloop);
+    }, { passive: true });
+    d.documentElement.addEventListener('mouseleave', function () { vOn = false; vane.classList.remove('on'); });
+  }
+
+  /* ---------- the wind calms as you read ---------- */
+  var calmPending = false;
+  var calm = function () {
+    if (calmPending) return; calmPending = true;
+    requestAnimationFrame(function () { calmPending = false; var k = Math.min(1, window.scrollY / Math.max(1, window.innerHeight)); root.style.setProperty('--wind-opacity', (1 - 0.55 * k).toFixed(3)); });
+  };
+  window.addEventListener('scroll', calm, { passive: true }); calm();
 
   /* ---------- reveals ---------- */
   var rev = $$('.reveal');
