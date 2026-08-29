@@ -1,0 +1,1556 @@
+{
+ "en": {
+  "site": {
+   "name": "Trịnh Ngọc Diệu",
+   "skip": "Skip to content",
+   "home_aria": "Trịnh Ngọc Diệu — home",
+   "nav": {
+    "projects": "Projects",
+    "books": "Books",
+    "activity": "Activity",
+    "transfer": "Transfer",
+    "contact": "Contact"
+   },
+   "theme_btn": "Toggle dark mode",
+   "lang_label": "Language",
+   "wind_on": "Wind on",
+   "wind_off": "Wind off",
+   "keys": "Keys {1}–{5} pages · {H} home · {T} theme · {W} wind",
+   "living": "Living and working in Tokyo, Japan.",
+   "built": "Built by hand — no framework, one WebGL shader, live wind via {openmeteo}",
+   "source": "Source ↗",
+   "banner": "This page is also available in English.",
+   "banner_switch": "Switch to English",
+   "banner_dismiss": "Dismiss"
+  },
+  "home": {
+   "title": "Trịnh Ngọc Diệu — Tokyo",
+   "og_title": "Trịnh Ngọc Diệu",
+   "desc": "Personal website of Trịnh Ngọc Diệu — living and working in Tokyo, building small AI products for languages and law. Projects, books, and a way to say hello.",
+   "readout_aria": "Tokyo right now",
+   "tokyo": "Tokyo",
+   "readout_wind": "Wind {wind} from {dir}",
+   "eyebrow": "— I’m Diệu",
+   "lede": "I live and work in <strong>Tokyo, Japan</strong>, building small AI products: for learning Japanese, for Vietnamese law, and for giving AI better context. In this small corner of the internet I share what I’ve learnt, my life experiences, and a few favourite books.",
+   "see_projects": "See projects",
+   "say_hello": "Say hello",
+   "bf_default": [
+    "Light breeze",
+    "wind felt on the face; leaves rustle."
+   ],
+   "bf_connecting": "Connecting to Tokyo’s wind…",
+   "wind_from": "Wind from {dir}",
+   "default_breeze": "Default breeze",
+   "manual": " · steered by you, back to live soon",
+   "steer": "Steer the wind",
+   "photo_alt": "Trịnh Ngọc Diệu smiling, in front of a temple roof and green trees",
+   "about_h": "Off the keyboard",
+   "about_meta": "Cycling · Tea · Languages",
+   "cycling_label": "Sunny days",
+   "cycling_h": "Cycling",
+   "cycling_p": "I enjoy cycling on sunny days, savouring the scent of the breeze.",
+   "tea_h": "Tea",
+   "tea_p": "I also love drinking tea. A cup is usually within reach.",
+   "lang_h": "Languages",
+   "lang_p": "And learning languages — xin chào, こんにちは, hello, 안녕하세요, 你好. You might want to send me a message just to say hello.",
+   "now_h": "Now, in Tokyo",
+   "open_map": "Open the map ↗",
+   "now_time": "It’s {clock} in Tokyo",
+   "now_wx": ", {temp} and {cond}. The wind is {wind} from {dir}: {desc}",
+   "now_fail": ". Live weather is unavailable right now.",
+   "now_meta": "Weather: Open-Meteo, refreshed every 10 minutes",
+   "send_message": "Send a message",
+   "projects_h": "Projects",
+   "all_projects": "All projects →",
+   "sunarc": "Today’s sun path over Tokyo"
+  },
+  "projects": {
+   "title": "Projects — Trịnh Ngọc Diệu",
+   "desc": "Projects by Trịnh Ngọc Diệu: cardgo.ai (AI Context Cards), unihongo.com (Japanese AI Sensei), chatluat.com (Vietnamese Legal AI).",
+   "meta": "Personal &amp; community · 3 active",
+   "h": "Projects",
+   "lede": "I’m currently working on several personal and community projects. If you’re interested or would like to collaborate, {contact}.",
+   "contact_link": "please contact me",
+   "kinds": [
+    "Card",
+    "Language",
+    "Law"
+   ],
+   "taglines": [
+    "AI Context Cards",
+    "Japanese AI Sensei",
+    "Vietnamese Legal AI"
+   ],
+   "aria": "Project cards"
+  },
+  "books": {
+   "title": "Books — Trịnh Ngọc Diệu",
+   "desc": "What Trịnh Ngọc Diệu is reading — shelves updated automatically from Goodreads.",
+   "meta": "Source · Goodreads · auto-updated",
+   "h": "Books",
+   "lede": "My bookshelves, updated automatically from my {goodreads}.",
+   "goodreads_link": "Goodreads page",
+   "reading_now": "Reading now",
+   "recently_read": "Recently read",
+   "fail": "Couldn’t load the shelves right now.",
+   "open_shelf": "Open my Goodreads shelf ↗",
+   "covers": "Covers and titles from {goodreads}",
+   "covers_link": "my Goodreads shelves ↗",
+   "aria": "Bookshelves"
+  },
+  "activity": {
+   "title": "Activity — Trịnh Ngọc Diệu",
+   "desc": "Posts by Trịnh Ngọc Diệu on X, picked by hand.",
+   "meta": "Source · X (Twitter) · picked by hand",
+   "h": "Activity",
+   "lede": "A few posts from my {x}, picked by hand.",
+   "x_link": "X (Twitter) page",
+   "posts_by": "Posts by @trinhngocdieu ↗",
+   "not_loading": "Not loading?",
+   "open_x": "Open my X profile ↗",
+   "aria": "Recent posts",
+   "curated_note": "X no longer shows timelines to visitors who aren’t signed in, so the posts here are picked by hand.",
+   "follow": "Follow @trinhngocdieu on X ↗",
+   "empty": "No posts listed yet — follow along on X."
+  },
+  "transfer": {
+   "title": "Transfer — Trịnh Ngọc Diệu",
+   "desc": "Payment and transfer details for Trịnh Ngọc Diệu — ACB Bank and PayPay.",
+   "meta": "Bank · PayPay",
+   "h": "Transfer",
+   "lede": "You can find my payment and transfer information here, for easy reference when needed.",
+   "slip": "Transfer slip · Trinh Ngoc Dieu",
+   "name": "Name",
+   "acb": "ACB Bank",
+   "paypay": "PayPay",
+   "copy": "Copy",
+   "acb_vn": "ACB · Vietnam",
+   "paypay_jp": "PayPay · Japan",
+   "aria": "Transfer details"
+  },
+  "contact": {
+   "title": "Contact — Trịnh Ngọc Diệu",
+   "desc": "Say hello to Trịnh Ngọc Diệu — email, Messenger, and elsewhere on the internet.",
+   "meta": "Tokyo · Japan",
+   "h": "Contact",
+   "lede": "Thank you for visiting my personal website. In this huge world of the internet, we can meet each other here.",
+   "postcard": "Post card",
+   "msg1": "Dear friend,",
+   "msg2": "You can leave a message, or just say “have a nice day”. Let’s be friends on this journey of life!",
+   "msg3": "— Diệu, Tokyo",
+   "email": "Email",
+   "messenger": "Messenger",
+   "city": "City",
+   "tokyo": "Tokyo, Japan",
+   "send_message": "Send a message",
+   "email_me": "Email me",
+   "elsewhere": "Elsewhere",
+   "aria": "Postcard"
+  },
+  "notfound": {
+   "title": "Page not found — Trịnh Ngọc Diệu",
+   "desc": "This page drifted away.",
+   "meta": "Error 404 · not found",
+   "lede": "The page you were looking for drifted away with the breeze — a mistyped address or an out-of-date link.",
+   "back_home": "Back home",
+   "see_projects": "See projects"
+  },
+  "dyn": {
+   "beaufort": [
+    [
+     "Calm",
+     "smoke rises vertically."
+    ],
+    [
+     "Light air",
+     "smoke drifts, wind vanes stay still."
+    ],
+    [
+     "Light breeze",
+     "wind felt on the face; leaves rustle."
+    ],
+    [
+     "Gentle breeze",
+     "leaves and small twigs in constant motion."
+    ],
+    [
+     "Moderate breeze",
+     "raises dust and loose paper; small branches move."
+    ],
+    [
+     "Fresh breeze",
+     "small trees in leaf begin to sway."
+    ],
+    [
+     "Strong breeze",
+     "large branches in motion; umbrellas are a struggle."
+    ],
+    [
+     "Near gale",
+     "whole trees in motion; walking against it is an effort."
+    ],
+    [
+     "Gale",
+     "twigs break off trees; progress impeded."
+    ],
+    [
+     "Strong gale",
+     "slight structural damage."
+    ],
+    [
+     "Storm",
+     "trees uprooted; considerable damage."
+    ],
+    [
+     "Violent storm",
+     "widespread damage."
+    ],
+    [
+     "Hurricane",
+     "devastation."
+    ]
+   ],
+   "wmo": [
+    "clear",
+    "mainly clear",
+    "partly cloudy",
+    "overcast",
+    "fog",
+    "rime fog",
+    "light drizzle",
+    "drizzle",
+    "dense drizzle",
+    "freezing drizzle",
+    "freezing drizzle",
+    "light rain",
+    "rain",
+    "heavy rain",
+    "freezing rain",
+    "freezing rain",
+    "light snow",
+    "snow",
+    "heavy snow",
+    "snow grains",
+    "light showers",
+    "showers",
+    "heavy showers",
+    "snow showers",
+    "snow showers",
+    "thunderstorm",
+    "thunderstorm with hail",
+    "thunderstorm with hail"
+   ],
+   "live_note": "Live — this page’s breeze follows Tokyo’s wind",
+   "live_fail": "Live wind unavailable — showing a default breeze",
+   "sun_up": "Sun up · sets {t}",
+   "twilight": "Twilight",
+   "sun_down": "Sun down · rises {t}",
+   "golden_rose": "Golden hour · rose {t}",
+   "golden_sets": "Golden hour · sets {t}",
+   "copied": "Copied {v}",
+   "copied_btn": "Copied",
+   "copy": "Copy",
+   "copy_failed": "Copy failed — select the text instead",
+   "copy_unsupported": "Copy not supported here",
+   "wind_on": "Wind on",
+   "wind_off": "Wind off",
+   "theme_follow": "Theme follows Tokyo’s daylight — click to choose",
+   "theme_choice": "Theme: your choice"
+  }
+ },
+ "vi": {
+  "site": {
+   "name": "Trịnh Ngọc Diệu",
+   "skip": "Bỏ qua đến nội dung",
+   "home_aria": "Trịnh Ngọc Diệu — trang chủ",
+   "nav": {
+    "projects": "Dự án",
+    "books": "Sách",
+    "activity": "Hoạt động",
+    "transfer": "Chuyển khoản",
+    "contact": "Liên hệ"
+   },
+   "theme_btn": "Bật/tắt chế độ tối",
+   "lang_label": "Ngôn ngữ",
+   "wind_on": "Gió: bật",
+   "wind_off": "Gió: tắt",
+   "keys": "Phím {1}–{5} chuyển trang · {H} trang chủ · {T} giao diện · {W} gió",
+   "living": "Đang sống và làm việc tại Tokyo, Nhật Bản.",
+   "built": "Tự tay xây dựng — không framework, một shader WebGL, gió trực tiếp từ {openmeteo}",
+   "source": "Mã nguồn ↗",
+   "banner": "Trang này cũng có bản tiếng Việt.",
+   "banner_switch": "Chuyển sang tiếng Việt",
+   "banner_dismiss": "Bỏ qua"
+  },
+  "home": {
+   "title": "Trịnh Ngọc Diệu — Tokyo",
+   "og_title": "Trịnh Ngọc Diệu",
+   "desc": "Trang cá nhân của Trịnh Ngọc Diệu — sống và làm việc tại Tokyo, xây dựng những sản phẩm AI nhỏ cho ngôn ngữ và pháp luật. Dự án, sách, và một nơi để nói lời chào.",
+   "readout_aria": "Tokyo lúc này",
+   "tokyo": "Tokyo",
+   "readout_wind": "Gió {wind} từ hướng {dir}",
+   "eyebrow": "— Mình là Diệu",
+   "lede": "Mình đang sống và làm việc tại <strong>Tokyo, Nhật Bản</strong>, xây dựng những sản phẩm AI nhỏ: để học tiếng Nhật, về pháp luật Việt Nam, và để cho AI nhiều ngữ cảnh hơn. Ở góc nhỏ này của Internet, mình chia sẻ những điều đã học, trải nghiệm cuộc sống và vài cuốn sách yêu thích.",
+   "see_projects": "Xem dự án",
+   "say_hello": "Gửi lời chào",
+   "bf_default": [
+    "Gió nhẹ",
+    "cảm nhận được gió trên mặt; lá cây xào xạc."
+   ],
+   "bf_connecting": "Đang kết nối với gió Tokyo…",
+   "wind_from": "Gió từ hướng {dir}",
+   "default_breeze": "Gió mặc định",
+   "manual": " · bạn đang điều khiển, sẽ trở về gió thật ngay",
+   "steer": "Điều khiển hướng gió",
+   "photo_alt": "Trịnh Ngọc Diệu đang cười, phía sau là mái chùa và cây xanh",
+   "about_h": "Ngoài bàn phím",
+   "about_meta": "Đạp xe · Trà · Ngôn ngữ",
+   "cycling_label": "Ngày nắng",
+   "cycling_h": "Đạp xe",
+   "cycling_p": "Mình thích đạp xe vào những ngày nắng, tận hưởng hương gió thoảng qua.",
+   "tea_h": "Trà",
+   "tea_p": "Mình cũng rất thích uống trà. Thường lúc nào cũng có một tách bên cạnh.",
+   "lang_h": "Ngôn ngữ",
+   "lang_p": "Và học ngoại ngữ — xin chào, こんにちは, hello, 안녕하세요, 你好. Bạn có thể nhắn cho mình chỉ để nói một lời chào.",
+   "now_h": "Tokyo lúc này",
+   "open_map": "Mở bản đồ ↗",
+   "now_time": "Bây giờ là {clock} ở Tokyo",
+   "now_wx": ", {temp}, {cond}. Gió {wind} từ hướng {dir}: {desc}",
+   "now_fail": ". Hiện chưa lấy được dữ liệu thời tiết trực tiếp.",
+   "now_meta": "Thời tiết: Open-Meteo, cập nhật mỗi 10 phút",
+   "send_message": "Gửi tin nhắn",
+   "projects_h": "Dự án",
+   "all_projects": "Tất cả dự án →",
+   "sunarc": "Đường đi của mặt trời trên Tokyo hôm nay"
+  },
+  "projects": {
+   "title": "Dự án — Trịnh Ngọc Diệu",
+   "desc": "Các dự án của Trịnh Ngọc Diệu: cardgo.ai (Thẻ ngữ cảnh AI), unihongo.com (Thầy giáo AI tiếng Nhật), chatluat.com (AI pháp luật Việt Nam).",
+   "meta": "Cá nhân &amp; cộng đồng · 3 đang hoạt động",
+   "h": "Dự án",
+   "lede": "Mình đang thực hiện một số dự án cá nhân và cộng đồng. Nếu bạn quan tâm hoặc muốn hợp tác, {contact}.",
+   "contact_link": "hãy liên hệ với mình",
+   "kinds": [
+    "Thẻ",
+    "Ngôn ngữ",
+    "Luật"
+   ],
+   "taglines": [
+    "Thẻ ngữ cảnh AI",
+    "Thầy giáo AI tiếng Nhật",
+    "AI pháp luật Việt Nam"
+   ],
+   "aria": "Thẻ dự án"
+  },
+  "books": {
+   "title": "Sách — Trịnh Ngọc Diệu",
+   "desc": "Những cuốn sách Trịnh Ngọc Diệu đang đọc — tự động cập nhật từ Goodreads.",
+   "meta": "Nguồn · Goodreads · tự động cập nhật",
+   "h": "Sách",
+   "lede": "Kệ sách của mình, tự động cập nhật từ {goodreads}.",
+   "goodreads_link": "trang Goodreads",
+   "reading_now": "Đang đọc",
+   "recently_read": "Đã đọc gần đây",
+   "fail": "Hiện chưa tải được kệ sách.",
+   "open_shelf": "Mở kệ sách Goodreads của mình ↗",
+   "covers": "Bìa và tên sách từ {goodreads}",
+   "covers_link": "kệ sách Goodreads của mình ↗",
+   "aria": "Kệ sách"
+  },
+  "activity": {
+   "title": "Hoạt động — Trịnh Ngọc Diệu",
+   "desc": "Các bài đăng trên X của Trịnh Ngọc Diệu, chọn thủ công.",
+   "meta": "Nguồn · X (Twitter) · chọn thủ công",
+   "h": "Hoạt động",
+   "lede": "Vài bài đăng từ {x} của mình, chọn thủ công.",
+   "x_link": "trang X (Twitter)",
+   "posts_by": "Bài đăng của @trinhngocdieu ↗",
+   "not_loading": "Không hiển thị?",
+   "open_x": "Mở trang X của mình ↗",
+   "aria": "Bài đăng gần đây",
+   "curated_note": "X không còn hiển thị dòng thời gian cho khách chưa đăng nhập, nên các bài đăng ở đây được chọn thủ công.",
+   "follow": "Theo dõi @trinhngocdieu trên X ↗",
+   "empty": "Chưa có bài đăng nào — hãy theo dõi mình trên X."
+  },
+  "transfer": {
+   "title": "Chuyển khoản — Trịnh Ngọc Diệu",
+   "desc": "Thông tin thanh toán và chuyển khoản của Trịnh Ngọc Diệu — ACB và PayPay.",
+   "meta": "Ngân hàng · PayPay",
+   "h": "Chuyển khoản",
+   "lede": "Bạn có thể xem thông tin thanh toán và chuyển khoản của mình ở đây, để tiện tra cứu khi cần.",
+   "slip": "Phiếu chuyển khoản · Trinh Ngoc Dieu",
+   "name": "Tên",
+   "acb": "Ngân hàng ACB",
+   "paypay": "PayPay",
+   "copy": "Sao chép",
+   "acb_vn": "ACB · Việt Nam",
+   "paypay_jp": "PayPay · Nhật Bản",
+   "aria": "Thông tin chuyển khoản"
+  },
+  "contact": {
+   "title": "Liên hệ — Trịnh Ngọc Diệu",
+   "desc": "Gửi lời chào đến Trịnh Ngọc Diệu — email, Messenger và các nơi khác trên Internet.",
+   "meta": "Tokyo · Nhật Bản",
+   "h": "Liên hệ",
+   "lede": "Cảm ơn bạn đã ghé thăm trang cá nhân của mình. Giữa thế giới Internet rộng lớn này, chúng ta có thể gặp nhau ở đây.",
+   "postcard": "Bưu thiếp",
+   "msg1": "Bạn thân mến,",
+   "msg2": "Bạn có thể để lại lời nhắn, hay chỉ cần nói “chúc một ngày tốt lành”. Hãy làm bạn với nhau trên hành trình cuộc sống này nhé!",
+   "msg3": "— Diệu, Tokyo",
+   "email": "Email",
+   "messenger": "Messenger",
+   "city": "Thành phố",
+   "tokyo": "Tokyo, Nhật Bản",
+   "send_message": "Gửi tin nhắn",
+   "email_me": "Gửi email",
+   "elsewhere": "Nơi khác",
+   "aria": "Bưu thiếp"
+  },
+  "notfound": {
+   "title": "Không tìm thấy trang — Trịnh Ngọc Diệu",
+   "desc": "Trang này đã trôi đi mất.",
+   "meta": "Lỗi 404 · không tìm thấy",
+   "lede": "Trang bạn tìm đã theo gió bay đi — có thể do gõ sai địa chỉ hoặc đường dẫn đã cũ.",
+   "back_home": "Về trang chủ",
+   "see_projects": "Xem dự án"
+  },
+  "dyn": {
+   "beaufort": [
+    [
+     "Lặng gió",
+     "khói bốc thẳng lên."
+    ],
+    [
+     "Gió rất nhẹ",
+     "khói hơi lay, chong chóng gió đứng yên."
+    ],
+    [
+     "Gió nhẹ",
+     "cảm nhận được gió trên mặt; lá cây xào xạc."
+    ],
+    [
+     "Gió nhẹ vừa",
+     "lá và cành nhỏ lay động liên tục."
+    ],
+    [
+     "Gió vừa",
+     "bụi và giấy bay lên; cành nhỏ đung đưa."
+    ],
+    [
+     "Gió khá mạnh",
+     "cây nhỏ có lá bắt đầu đung đưa."
+    ],
+    [
+     "Gió mạnh",
+     "cành lớn lay động; khó dùng ô."
+    ],
+    [
+     "Gió rất mạnh",
+     "cả cây lay động; đi ngược gió thấy nặng."
+    ],
+    [
+     "Gió bão",
+     "cành con gãy; đi lại khó khăn."
+    ],
+    [
+     "Bão mạnh",
+     "hư hại nhẹ nhà cửa."
+    ],
+    [
+     "Bão rất mạnh",
+     "cây bật gốc; thiệt hại đáng kể."
+    ],
+    [
+     "Bão dữ dội",
+     "thiệt hại trên diện rộng."
+    ],
+    [
+     "Cuồng phong",
+     "tàn phá."
+    ]
+   ],
+   "wmo": [
+    "trời quang",
+    "ít mây",
+    "có mây",
+    "trời âm u",
+    "sương mù",
+    "sương giá",
+    "mưa phùn nhẹ",
+    "mưa phùn",
+    "mưa phùn dày",
+    "mưa phùn đóng băng",
+    "mưa phùn đóng băng",
+    "mưa nhỏ",
+    "mưa",
+    "mưa to",
+    "mưa đóng băng",
+    "mưa đóng băng",
+    "tuyết nhẹ",
+    "tuyết",
+    "tuyết dày",
+    "hạt tuyết",
+    "mưa rào nhẹ",
+    "mưa rào",
+    "mưa rào to",
+    "mưa tuyết",
+    "mưa tuyết",
+    "dông",
+    "dông kèm mưa đá",
+    "dông kèm mưa đá"
+   ],
+   "live_note": "Trực tiếp — làn gió trên trang này theo gió Tokyo",
+   "live_fail": "Không có dữ liệu gió trực tiếp — đang hiển thị gió mặc định",
+   "sun_up": "Mặt trời đã lên · lặn lúc {t}",
+   "twilight": "Chạng vạng",
+   "sun_down": "Mặt trời đã lặn · mọc lúc {t}",
+   "golden_rose": "Giờ vàng · mọc lúc {t}",
+   "golden_sets": "Giờ vàng · lặn lúc {t}",
+   "copied": "Đã sao chép {v}",
+   "copied_btn": "Đã chép",
+   "copy": "Sao chép",
+   "copy_failed": "Không sao chép được — hãy chọn văn bản thay thế",
+   "copy_unsupported": "Trình duyệt không hỗ trợ sao chép",
+   "wind_on": "Gió: bật",
+   "wind_off": "Gió: tắt",
+   "theme_follow": "Giao diện theo ánh sáng ban ngày ở Tokyo — bấm để tự chọn",
+   "theme_choice": "Giao diện: do bạn chọn"
+  }
+ },
+ "ja": {
+  "site": {
+   "name": "Trịnh Ngọc Diệu",
+   "skip": "本文へスキップ",
+   "home_aria": "Trịnh Ngọc Diệu — ホーム",
+   "nav": {
+    "projects": "プロジェクト",
+    "books": "本",
+    "activity": "近況",
+    "transfer": "振込",
+    "contact": "連絡先"
+   },
+   "theme_btn": "ダークモード切り替え",
+   "lang_label": "言語",
+   "wind_on": "風：オン",
+   "wind_off": "風：オフ",
+   "keys": "キー {1}〜{5} ページ · {H} ホーム · {T} テーマ · {W} 風",
+   "living": "東京で暮らし、働いています。",
+   "built": "手作り — フレームワークなし、WebGLシェーダー1本、風のデータは{openmeteo}から",
+   "source": "ソース ↗",
+   "banner": "このページには日本語版があります。",
+   "banner_switch": "日本語で見る",
+   "banner_dismiss": "閉じる"
+  },
+  "home": {
+   "title": "Trịnh Ngọc Diệu — 東京",
+   "og_title": "Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu の個人サイト。東京で暮らしながら、言語と法律のための小さなAIプロダクトを作っています。プロジェクト、本、そしてご挨拶の場所。",
+   "readout_aria": "いまの東京",
+   "tokyo": "東京",
+   "readout_wind": "風速 {wind} · 風向 {dir}",
+   "eyebrow": "— Diệu です",
+   "lede": "<strong>東京</strong>で暮らし、働きながら、小さなAIプロダクトを作っています。日本語学習のため、ベトナム法のため、そしてAIにより良いコンテキストを与えるために。インターネットのこの小さな片隅で、学んだこと、暮らしの経験、そして好きな本をいくつか分かち合います。",
+   "see_projects": "プロジェクトを見る",
+   "say_hello": "ご挨拶する",
+   "bf_default": [
+    "軽風",
+    "顔に風を感じる。木の葉が揺れる。"
+   ],
+   "bf_connecting": "東京の風に接続中…",
+   "wind_from": "風向 {dir}",
+   "default_breeze": "既定の風",
+   "manual": " · あなたが操作中。まもなくライブに戻ります",
+   "steer": "風向きを操作",
+   "photo_alt": "寺院の屋根と緑の木々を背に微笑む Trịnh Ngọc Diệu",
+   "about_h": "キーボードを離れて",
+   "about_meta": "自転車 · お茶 · 語学",
+   "cycling_label": "晴れの日",
+   "cycling_h": "自転車",
+   "cycling_p": "晴れた日に自転車に乗り、風の香りを味わうのが好きです。",
+   "tea_h": "お茶",
+   "tea_p": "お茶を飲むのも大好きです。たいてい手の届くところに一杯あります。",
+   "lang_h": "語学",
+   "lang_p": "そして語学 — xin chào、こんにちは、hello、안녕하세요、你好。ひとこと挨拶するだけでも、メッセージをどうぞ。",
+   "now_h": "いま、東京は",
+   "open_map": "地図を開く ↗",
+   "now_time": "東京は今 {clock}",
+   "now_wx": "、{temp}、{cond}。風は{dir}から {wind}：{desc}",
+   "now_fail": "。現在、ライブの天気情報を取得できません。",
+   "now_meta": "天気：Open-Meteo、10分ごとに更新",
+   "send_message": "メッセージを送る",
+   "projects_h": "プロジェクト",
+   "all_projects": "すべてのプロジェクト →",
+   "sunarc": "今日の東京の太陽の軌跡"
+  },
+  "projects": {
+   "title": "プロジェクト — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu のプロジェクト：cardgo.ai（AIコンテキストカード）、unihongo.com（日本語AI先生）、chatluat.com（ベトナム法務AI）。",
+   "meta": "個人 &amp; コミュニティ · 3件 進行中",
+   "h": "プロジェクト",
+   "lede": "現在、いくつかの個人プロジェクトとコミュニティプロジェクトに取り組んでいます。ご興味があれば、または一緒に何かしたい方は、{contact}。",
+   "contact_link": "ぜひご連絡ください",
+   "kinds": [
+    "カード",
+    "言語",
+    "法律"
+   ],
+   "taglines": [
+    "AIコンテキストカード",
+    "日本語AI先生",
+    "ベトナム法務AI"
+   ],
+   "aria": "プロジェクトカード"
+  },
+  "books": {
+   "title": "本 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu が読んでいる本 — Goodreads から自動更新。",
+   "meta": "ソース · Goodreads · 自動更新",
+   "h": "本",
+   "lede": "私の本棚です。{goodreads}から自動的に更新されます。",
+   "goodreads_link": "Goodreads のページ",
+   "reading_now": "読書中",
+   "recently_read": "最近読んだ本",
+   "fail": "本棚を読み込めませんでした。",
+   "open_shelf": "Goodreads の本棚を開く ↗",
+   "covers": "表紙とタイトルは{goodreads}より",
+   "covers_link": "私の Goodreads 本棚 ↗",
+   "aria": "本棚"
+  },
+  "activity": {
+   "title": "近況 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu の X の投稿（手動で選択）。",
+   "meta": "ソース · X（Twitter） · 手動選択",
+   "h": "近況",
+   "lede": "{x}からいくつかの投稿を、手作業で選んで載せています。",
+   "x_link": "私の X（Twitter）",
+   "posts_by": "@trinhngocdieu の投稿 ↗",
+   "not_loading": "表示されませんか？",
+   "open_x": "X のプロフィールを開く ↗",
+   "aria": "最近の投稿",
+   "curated_note": "X はログインしていない訪問者にタイムラインを表示しなくなったため、ここの投稿は手作業で選んでいます。",
+   "follow": "X で @trinhngocdieu をフォロー ↗",
+   "empty": "まだ投稿はありません — X でフォローしてください。"
+  },
+  "transfer": {
+   "title": "振込 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu の支払い・振込情報 — ACB銀行と PayPay。",
+   "meta": "銀行 · PayPay",
+   "h": "振込",
+   "lede": "支払い・振込の情報をここにまとめています。必要なときにご参照ください。",
+   "slip": "振込票 · Trinh Ngoc Dieu",
+   "name": "名義",
+   "acb": "ACB銀行",
+   "paypay": "PayPay",
+   "copy": "コピー",
+   "acb_vn": "ACB · ベトナム",
+   "paypay_jp": "PayPay · 日本",
+   "aria": "振込情報"
+  },
+  "contact": {
+   "title": "連絡先 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu にご挨拶 — メール、Messenger、その他。",
+   "meta": "東京 · 日本",
+   "h": "連絡先",
+   "lede": "個人サイトを訪ねてくださってありがとうございます。広いインターネットの世界で、ここで出会えました。",
+   "postcard": "ポストカード",
+   "msg1": "親愛なる友へ、",
+   "msg2": "メッセージを残してもいいし、「良い一日を」とひとこと言うだけでも。人生という旅の道連れになりましょう！",
+   "msg3": "— Diệu、東京より",
+   "email": "メール",
+   "messenger": "Messenger",
+   "city": "都市",
+   "tokyo": "東京、日本",
+   "send_message": "メッセージを送る",
+   "email_me": "メールする",
+   "elsewhere": "その他の場所",
+   "aria": "ポストカード"
+  },
+  "notfound": {
+   "title": "ページが見つかりません — Trịnh Ngọc Diệu",
+   "desc": "このページは風に流されていきました。",
+   "meta": "エラー 404 · 見つかりません",
+   "lede": "お探しのページは風とともに流れていきました — アドレスの入力ミスか、古いリンクかもしれません。",
+   "back_home": "ホームへ戻る",
+   "see_projects": "プロジェクトを見る"
+  },
+  "dyn": {
+   "beaufort": [
+    [
+     "静穏",
+     "煙がまっすぐ上る。"
+    ],
+    [
+     "至軽風",
+     "煙がなびく。風見は動かない。"
+    ],
+    [
+     "軽風",
+     "顔に風を感じる。木の葉が揺れる。"
+    ],
+    [
+     "軟風",
+     "木の葉や小枝が絶えず動く。"
+    ],
+    [
+     "和風",
+     "砂ぼこりが立ち、紙片が舞う。小枝が動く。"
+    ],
+    [
+     "疾風",
+     "葉のある低木が揺れ始める。"
+    ],
+    [
+     "雄風",
+     "大枝が動く。傘がさしにくい。"
+    ],
+    [
+     "強風",
+     "樹木全体が揺れる。風に向かって歩きにくい。"
+    ],
+    [
+     "疾強風",
+     "小枝が折れる。歩行が困難。"
+    ],
+    [
+     "大強風",
+     "建物に軽い被害。"
+    ],
+    [
+     "全強風",
+     "樹木が根こそぎ倒れ、かなりの被害。"
+    ],
+    [
+     "暴風",
+     "広範囲に被害。"
+    ],
+    [
+     "颶風",
+     "壊滅的な被害。"
+    ]
+   ],
+   "wmo": [
+    "快晴",
+    "晴れ",
+    "曇りがち",
+    "曇り",
+    "霧",
+    "霧氷",
+    "弱い霧雨",
+    "霧雨",
+    "強い霧雨",
+    "着氷性の霧雨",
+    "着氷性の霧雨",
+    "小雨",
+    "雨",
+    "大雨",
+    "着氷性の雨",
+    "着氷性の雨",
+    "小雪",
+    "雪",
+    "大雪",
+    "霧雪",
+    "弱いにわか雨",
+    "にわか雨",
+    "強いにわか雨",
+    "にわか雪",
+    "にわか雪",
+    "雷雨",
+    "雹を伴う雷雨",
+    "雹を伴う雷雨"
+   ],
+   "live_note": "ライブ — このページの風は東京の風に連動しています",
+   "live_fail": "ライブの風を取得できません — 既定の風を表示中",
+   "sun_up": "日の出後 · 日没 {t}",
+   "twilight": "薄明",
+   "sun_down": "日没後 · 日の出 {t}",
+   "golden_rose": "ゴールデンアワー · 日の出 {t}",
+   "golden_sets": "ゴールデンアワー · 日没 {t}",
+   "copied": "{v} をコピーしました",
+   "copied_btn": "コピー済み",
+   "copy": "コピー",
+   "copy_failed": "コピーできませんでした — テキストを選択してください",
+   "copy_unsupported": "この環境ではコピーできません",
+   "wind_on": "風：オン",
+   "wind_off": "風：オフ",
+   "theme_follow": "テーマは東京の昼夜に連動 — クリックで選択",
+   "theme_choice": "テーマ：あなたの選択"
+  }
+ },
+ "ko": {
+  "site": {
+   "name": "Trịnh Ngọc Diệu",
+   "skip": "본문으로 건너뛰기",
+   "home_aria": "Trịnh Ngọc Diệu — 홈",
+   "nav": {
+    "projects": "프로젝트",
+    "books": "책",
+    "activity": "근황",
+    "transfer": "송금",
+    "contact": "연락처"
+   },
+   "theme_btn": "다크 모드 전환",
+   "lang_label": "언어",
+   "wind_on": "바람 켜짐",
+   "wind_off": "바람 꺼짐",
+   "keys": "키 {1}–{5} 페이지 · {H} 홈 · {T} 테마 · {W} 바람",
+   "living": "일본 도쿄에서 살며 일하고 있습니다.",
+   "built": "손수 만들었습니다 — 프레임워크 없이, WebGL 셰이더 하나, 실시간 바람은 {openmeteo}에서",
+   "source": "소스 ↗",
+   "banner": "이 페이지는 한국어로도 볼 수 있습니다.",
+   "banner_switch": "한국어로 보기",
+   "banner_dismiss": "닫기"
+  },
+  "home": {
+   "title": "Trịnh Ngọc Diệu — 도쿄",
+   "og_title": "Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu의 개인 웹사이트 — 도쿄에서 살며 언어와 법률을 위한 작은 AI 제품을 만듭니다. 프로젝트, 책, 그리고 인사를 건넬 곳.",
+   "readout_aria": "지금 도쿄",
+   "tokyo": "도쿄",
+   "readout_wind": "바람 {wind} · {dir}에서",
+   "eyebrow": "— 저는 Diệu입니다",
+   "lede": "<strong>일본 도쿄</strong>에서 살며 일하고, 작은 AI 제품을 만듭니다: 일본어 학습을 위해, 베트남 법률을 위해, 그리고 AI에 더 나은 맥락을 주기 위해. 인터넷의 이 작은 구석에서 배운 것, 삶의 경험, 그리고 좋아하는 책 몇 권을 나눕니다.",
+   "see_projects": "프로젝트 보기",
+   "say_hello": "인사하기",
+   "bf_default": [
+    "남실바람",
+    "얼굴에 바람이 느껴짐; 나뭇잎이 흔들림."
+   ],
+   "bf_connecting": "도쿄의 바람에 연결하는 중…",
+   "wind_from": "풍향 {dir}",
+   "default_breeze": "기본 바람",
+   "manual": " · 직접 조종 중, 곧 실시간으로 돌아갑니다",
+   "steer": "바람 방향 조종",
+   "photo_alt": "사찰 지붕과 푸른 나무를 배경으로 웃고 있는 Trịnh Ngọc Diệu",
+   "about_h": "키보드를 떠나서",
+   "about_meta": "자전거 · 차 · 언어",
+   "cycling_label": "맑은 날",
+   "cycling_h": "자전거",
+   "cycling_p": "맑은 날 자전거를 타며 바람의 향기를 느끼는 것을 좋아합니다.",
+   "tea_h": "차",
+   "tea_p": "차 마시는 것도 무척 좋아합니다. 보통 손 닿는 곳에 한 잔이 있어요.",
+   "lang_h": "언어",
+   "lang_p": "그리고 언어 배우기 — xin chào, こんにちは, hello, 안녕하세요, 你好. 그냥 인사만 하려고 메시지를 보내셔도 좋습니다.",
+   "now_h": "지금, 도쿄는",
+   "open_map": "지도 열기 ↗",
+   "now_time": "도쿄는 지금 {clock}",
+   "now_wx": ", {temp}, {cond}. 바람은 {dir}에서 {wind}: {desc}",
+   "now_fail": ". 지금은 실시간 날씨를 가져올 수 없습니다.",
+   "now_meta": "날씨: Open-Meteo, 10분마다 갱신",
+   "send_message": "메시지 보내기",
+   "projects_h": "프로젝트",
+   "all_projects": "모든 프로젝트 →",
+   "sunarc": "오늘 도쿄의 태양 경로"
+  },
+  "projects": {
+   "title": "프로젝트 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu의 프로젝트: cardgo.ai (AI 컨텍스트 카드), unihongo.com (일본어 AI 선생님), chatluat.com (베트남 법률 AI).",
+   "meta": "개인 &amp; 커뮤니티 · 3개 진행 중",
+   "h": "프로젝트",
+   "lede": "현재 여러 개인 및 커뮤니티 프로젝트를 진행하고 있습니다. 관심이 있거나 함께하고 싶다면 {contact}.",
+   "contact_link": "연락 주세요",
+   "kinds": [
+    "카드",
+    "언어",
+    "법률"
+   ],
+   "taglines": [
+    "AI 컨텍스트 카드",
+    "일본어 AI 선생님",
+    "베트남 법률 AI"
+   ],
+   "aria": "프로젝트 카드"
+  },
+  "books": {
+   "title": "책 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu가 읽고 있는 책 — Goodreads에서 자동 갱신.",
+   "meta": "출처 · Goodreads · 자동 갱신",
+   "h": "책",
+   "lede": "제 책장입니다. {goodreads}에서 자동으로 갱신됩니다.",
+   "goodreads_link": "Goodreads 페이지",
+   "reading_now": "읽는 중",
+   "recently_read": "최근 읽은 책",
+   "fail": "지금은 책장을 불러올 수 없습니다.",
+   "open_shelf": "Goodreads 책장 열기 ↗",
+   "covers": "표지와 제목은 {goodreads}에서",
+   "covers_link": "제 Goodreads 책장 ↗",
+   "aria": "책장"
+  },
+  "activity": {
+   "title": "근황 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu의 X 글, 직접 골라 올림.",
+   "meta": "출처 · X (트위터) · 직접 선정",
+   "h": "근황",
+   "lede": "{x}의 글 몇 개를 직접 골라 올립니다.",
+   "x_link": "제 X(트위터) 페이지",
+   "posts_by": "@trinhngocdieu의 글 ↗",
+   "not_loading": "표시되지 않나요?",
+   "open_x": "X 프로필 열기 ↗",
+   "aria": "최근 글",
+   "curated_note": "X는 로그인하지 않은 방문자에게 타임라인을 더 이상 보여주지 않아, 여기의 글은 직접 골라 올립니다.",
+   "follow": "X에서 @trinhngocdieu 팔로우 ↗",
+   "empty": "아직 올린 글이 없습니다 — X에서 팔로우해 주세요."
+  },
+  "transfer": {
+   "title": "송금 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu의 결제 및 송금 정보 — ACB 은행과 PayPay.",
+   "meta": "은행 · PayPay",
+   "h": "송금",
+   "lede": "필요할 때 참고할 수 있도록 결제 및 송금 정보를 여기에 정리했습니다.",
+   "slip": "송금 전표 · Trinh Ngoc Dieu",
+   "name": "이름",
+   "acb": "ACB 은행",
+   "paypay": "PayPay",
+   "copy": "복사",
+   "acb_vn": "ACB · 베트남",
+   "paypay_jp": "PayPay · 일본",
+   "aria": "송금 정보"
+  },
+  "contact": {
+   "title": "연락처 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu에게 인사하기 — 이메일, Messenger, 그리고 다른 곳.",
+   "meta": "도쿄 · 일본",
+   "h": "연락처",
+   "lede": "제 개인 웹사이트를 찾아 주셔서 감사합니다. 이 넓은 인터넷 세상에서, 우리는 여기서 만날 수 있습니다.",
+   "postcard": "엽서",
+   "msg1": "친애하는 친구에게,",
+   "msg2": "메시지를 남기셔도 좋고, 그저 “좋은 하루 보내세요”라고 말해 주셔도 좋습니다. 인생이라는 여정에서 친구가 되어요!",
+   "msg3": "— Diệu, 도쿄에서",
+   "email": "이메일",
+   "messenger": "Messenger",
+   "city": "도시",
+   "tokyo": "일본 도쿄",
+   "send_message": "메시지 보내기",
+   "email_me": "이메일 보내기",
+   "elsewhere": "다른 곳에서",
+   "aria": "엽서"
+  },
+  "notfound": {
+   "title": "페이지를 찾을 수 없습니다 — Trịnh Ngọc Diệu",
+   "desc": "이 페이지는 바람에 날아갔습니다.",
+   "meta": "오류 404 · 찾을 수 없음",
+   "lede": "찾으시던 페이지는 바람과 함께 날아갔습니다 — 잘못 입력한 주소이거나 오래된 링크일 수 있습니다.",
+   "back_home": "홈으로",
+   "see_projects": "프로젝트 보기"
+  },
+  "dyn": {
+   "beaufort": [
+    [
+     "고요",
+     "연기가 곧게 올라감."
+    ],
+    [
+     "실바람",
+     "연기가 흘러감; 풍향계는 움직이지 않음."
+    ],
+    [
+     "남실바람",
+     "얼굴에 바람이 느껴짐; 나뭇잎이 흔들림."
+    ],
+    [
+     "산들바람",
+     "나뭇잎과 잔가지가 끊임없이 흔들림."
+    ],
+    [
+     "건들바람",
+     "먼지가 일고 종이가 날림; 작은 가지가 움직임."
+    ],
+    [
+     "흔들바람",
+     "잎이 있는 작은 나무가 흔들리기 시작함."
+    ],
+    [
+     "된바람",
+     "큰 가지가 움직임; 우산 쓰기 어려움."
+    ],
+    [
+     "센바람",
+     "나무 전체가 흔들림; 바람을 안고 걷기 힘듦."
+    ],
+    [
+     "큰바람",
+     "잔가지가 부러짐; 걷기 어려움."
+    ],
+    [
+     "큰센바람",
+     "건물에 가벼운 피해."
+    ],
+    [
+     "노대바람",
+     "나무가 뽑히고 상당한 피해."
+    ],
+    [
+     "왕바람",
+     "광범위한 피해."
+    ],
+    [
+     "싹쓸바람",
+     "파괴적 피해."
+    ]
+   ],
+   "wmo": [
+    "맑음",
+    "대체로 맑음",
+    "구름 조금",
+    "흐림",
+    "안개",
+    "서리 안개",
+    "약한 이슬비",
+    "이슬비",
+    "강한 이슬비",
+    "어는 이슬비",
+    "어는 이슬비",
+    "약한 비",
+    "비",
+    "강한 비",
+    "어는 비",
+    "어는 비",
+    "약한 눈",
+    "눈",
+    "많은 눈",
+    "싸락눈",
+    "약한 소나기",
+    "소나기",
+    "강한 소나기",
+    "소낙눈",
+    "소낙눈",
+    "뇌우",
+    "우박을 동반한 뇌우",
+    "우박을 동반한 뇌우"
+   ],
+   "live_note": "실시간 — 이 페이지의 바람은 도쿄의 바람을 따릅니다",
+   "live_fail": "실시간 바람을 가져올 수 없음 — 기본 바람 표시 중",
+   "sun_up": "해가 떠 있음 · 일몰 {t}",
+   "twilight": "황혼",
+   "sun_down": "해가 진 후 · 일출 {t}",
+   "golden_rose": "골든아워 · 일출 {t}",
+   "golden_sets": "골든아워 · 일몰 {t}",
+   "copied": "{v} 복사됨",
+   "copied_btn": "복사됨",
+   "copy": "복사",
+   "copy_failed": "복사 실패 — 텍스트를 직접 선택해 주세요",
+   "copy_unsupported": "여기서는 복사를 지원하지 않습니다",
+   "wind_on": "바람 켜짐",
+   "wind_off": "바람 꺼짐",
+   "theme_follow": "테마는 도쿄의 낮과 밤을 따릅니다 — 클릭하여 선택",
+   "theme_choice": "테마: 직접 선택"
+  }
+ },
+ "zh-hant": {
+  "site": {
+   "name": "Trịnh Ngọc Diệu",
+   "skip": "跳至內容",
+   "home_aria": "Trịnh Ngọc Diệu — 首頁",
+   "nav": {
+    "projects": "專案",
+    "books": "書",
+    "activity": "近況",
+    "transfer": "轉帳",
+    "contact": "聯絡"
+   },
+   "theme_btn": "切換深色模式",
+   "lang_label": "語言",
+   "wind_on": "風：開",
+   "wind_off": "風：關",
+   "keys": "按鍵 {1}–{5} 切換頁面 · {H} 首頁 · {T} 主題 · {W} 風",
+   "living": "在日本東京生活與工作。",
+   "built": "純手工打造 — 不用框架，一支 WebGL 著色器，即時風況來自 {openmeteo}",
+   "source": "原始碼 ↗",
+   "banner": "本頁也有繁體中文版。",
+   "banner_switch": "切換至繁體中文",
+   "banner_dismiss": "關閉"
+  },
+  "home": {
+   "title": "Trịnh Ngọc Diệu — 東京",
+   "og_title": "Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 的個人網站 — 在東京生活與工作，打造語言與法律領域的小型 AI 產品。專案、書，以及打聲招呼的地方。",
+   "readout_aria": "此刻的東京",
+   "tokyo": "東京",
+   "readout_wind": "風速 {wind} · 風向 {dir}",
+   "eyebrow": "— 我是 Diệu",
+   "lede": "我在<strong>日本東京</strong>生活與工作，打造小型的 AI 產品：學日語的、越南法律的，以及讓 AI 擁有更好脈絡的。在網路的這個小角落，我分享所學、生活經驗，以及幾本喜歡的書。",
+   "see_projects": "看看專案",
+   "say_hello": "打聲招呼",
+   "bf_default": [
+    "輕風",
+    "臉上感到有風；樹葉沙沙作響。"
+   ],
+   "bf_connecting": "正在連線東京的風…",
+   "wind_from": "風向 {dir}",
+   "default_breeze": "預設風況",
+   "manual": " · 由你操控，稍後回到即時風況",
+   "steer": "操控風向",
+   "photo_alt": "Trịnh Ngọc Diệu 在寺廟屋頂與綠樹前微笑",
+   "about_h": "離開鍵盤",
+   "about_meta": "騎車 · 茶 · 語言",
+   "cycling_label": "晴天",
+   "cycling_h": "騎車",
+   "cycling_p": "我喜歡在晴天騎車，細細品味微風的氣息。",
+   "tea_h": "茶",
+   "tea_p": "我也很愛喝茶，手邊通常都有一杯。",
+   "lang_h": "語言",
+   "lang_p": "還有學語言 — xin chào、こんにちは、hello、안녕하세요、你好。歡迎傳個訊息，只是打聲招呼也好。",
+   "now_h": "此刻，東京",
+   "open_map": "開啟地圖 ↗",
+   "now_time": "東京現在是 {clock}",
+   "now_wx": "，{temp}，{cond}。風從{dir}吹來，{wind}：{desc}",
+   "now_fail": "。目前無法取得即時天氣。",
+   "now_meta": "天氣：Open-Meteo，每 10 分鐘更新",
+   "send_message": "傳送訊息",
+   "projects_h": "專案",
+   "all_projects": "所有專案 →",
+   "sunarc": "今日東京的太陽軌跡"
+  },
+  "projects": {
+   "title": "專案 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 的專案：cardgo.ai（AI 脈絡卡片）、unihongo.com（日語 AI 老師）、chatluat.com（越南法律 AI）。",
+   "meta": "個人 &amp; 社群 · 3 個進行中",
+   "h": "專案",
+   "lede": "我目前正在進行幾個個人與社群專案。如果你有興趣或想一起合作，{contact}。",
+   "contact_link": "歡迎聯絡我",
+   "kinds": [
+    "卡片",
+    "語言",
+    "法律"
+   ],
+   "taglines": [
+    "AI 脈絡卡片",
+    "日語 AI 老師",
+    "越南法律 AI"
+   ],
+   "aria": "專案卡片"
+  },
+  "books": {
+   "title": "書 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 正在讀的書 — 由 Goodreads 自動更新。",
+   "meta": "來源 · Goodreads · 自動更新",
+   "h": "書",
+   "lede": "我的書架，由{goodreads}自動更新。",
+   "goodreads_link": "我的 Goodreads 頁面",
+   "reading_now": "正在讀",
+   "recently_read": "最近讀完",
+   "fail": "目前無法載入書架。",
+   "open_shelf": "開啟我的 Goodreads 書架 ↗",
+   "covers": "封面與書名來自{goodreads}",
+   "covers_link": "我的 Goodreads 書架 ↗",
+   "aria": "書架"
+  },
+  "activity": {
+   "title": "近況 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 在 X 上的貼文，手動挑選。",
+   "meta": "來源 · X（Twitter） · 手動挑選",
+   "h": "近況",
+   "lede": "從{x}挑選的幾則貼文。",
+   "x_link": "我的 X（Twitter）頁面",
+   "posts_by": "@trinhngocdieu 的貼文 ↗",
+   "not_loading": "沒有顯示？",
+   "open_x": "開啟我的 X 個人頁 ↗",
+   "aria": "最近貼文",
+   "curated_note": "X 不再向未登入的訪客顯示時間軸，因此這裡的貼文是手動挑選的。",
+   "follow": "在 X 上追蹤 @trinhngocdieu ↗",
+   "empty": "還沒有列出貼文 — 歡迎在 X 上追蹤。"
+  },
+  "transfer": {
+   "title": "轉帳 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 的付款與轉帳資訊 — ACB 銀行與 PayPay。",
+   "meta": "銀行 · PayPay",
+   "h": "轉帳",
+   "lede": "這裡整理了我的付款與轉帳資訊，需要時方便查閱。",
+   "slip": "轉帳單 · Trinh Ngoc Dieu",
+   "name": "姓名",
+   "acb": "ACB 銀行",
+   "paypay": "PayPay",
+   "copy": "複製",
+   "acb_vn": "ACB · 越南",
+   "paypay_jp": "PayPay · 日本",
+   "aria": "轉帳資訊"
+  },
+  "contact": {
+   "title": "聯絡 — Trịnh Ngọc Diệu",
+   "desc": "向 Trịnh Ngọc Diệu 打聲招呼 — 電子郵件、Messenger 與其他地方。",
+   "meta": "東京 · 日本",
+   "h": "聯絡",
+   "lede": "謝謝你來到我的個人網站。在這廣大的網路世界裡，我們能在這裡相遇。",
+   "postcard": "明信片",
+   "msg1": "親愛的朋友：",
+   "msg2": "你可以留言，或只是說一聲「祝你有美好的一天」。在人生這趟旅程裡，讓我們成為朋友吧！",
+   "msg3": "— Diệu，於東京",
+   "email": "電子郵件",
+   "messenger": "Messenger",
+   "city": "城市",
+   "tokyo": "日本東京",
+   "send_message": "傳送訊息",
+   "email_me": "寄信給我",
+   "elsewhere": "其他地方",
+   "aria": "明信片"
+  },
+  "notfound": {
+   "title": "找不到頁面 — Trịnh Ngọc Diệu",
+   "desc": "這個頁面隨風飄走了。",
+   "meta": "錯誤 404 · 找不到",
+   "lede": "你要找的頁面隨風飄走了 — 可能是網址打錯，或是連結已經過期。",
+   "back_home": "回首頁",
+   "see_projects": "看看專案"
+  },
+  "dyn": {
+   "beaufort": [
+    [
+     "無風",
+     "煙直上。"
+    ],
+    [
+     "軟風",
+     "煙能表示風向，但風向標不動。"
+    ],
+    [
+     "輕風",
+     "臉上感到有風；樹葉沙沙作響。"
+    ],
+    [
+     "微風",
+     "樹葉和小枝不停搖動。"
+    ],
+    [
+     "和風",
+     "揚起灰塵和紙張；小樹枝搖動。"
+    ],
+    [
+     "清風",
+     "有葉的小樹開始搖擺。"
+    ],
+    [
+     "強風",
+     "大樹枝搖動；撐傘困難。"
+    ],
+    [
+     "疾風",
+     "整棵樹搖動；迎風行走不便。"
+    ],
+    [
+     "大風",
+     "小樹枝折斷；行走困難。"
+    ],
+    [
+     "烈風",
+     "建築物有輕微損壞。"
+    ],
+    [
+     "狂風",
+     "樹木連根拔起；損壞相當嚴重。"
+    ],
+    [
+     "暴風",
+     "大範圍損壞。"
+    ],
+    [
+     "颶風",
+     "毀滅性破壞。"
+    ]
+   ],
+   "wmo": [
+    "晴朗",
+    "大致晴朗",
+    "局部多雲",
+    "陰天",
+    "霧",
+    "霧凇",
+    "小毛毛雨",
+    "毛毛雨",
+    "濃毛毛雨",
+    "凍毛毛雨",
+    "凍毛毛雨",
+    "小雨",
+    "雨",
+    "大雨",
+    "凍雨",
+    "凍雨",
+    "小雪",
+    "雪",
+    "大雪",
+    "雪粒",
+    "小陣雨",
+    "陣雨",
+    "大陣雨",
+    "陣雪",
+    "陣雪",
+    "雷雨",
+    "雷雨伴冰雹",
+    "雷雨伴冰雹"
+   ],
+   "live_note": "即時 — 本頁的微風跟隨東京的風",
+   "live_fail": "無法取得即時風況 — 顯示預設風況",
+   "sun_up": "日出後 · 日落 {t}",
+   "twilight": "暮光",
+   "sun_down": "日落後 · 日出 {t}",
+   "golden_rose": "黃金時刻 · 日出 {t}",
+   "golden_sets": "黃金時刻 · 日落 {t}",
+   "copied": "已複製 {v}",
+   "copied_btn": "已複製",
+   "copy": "複製",
+   "copy_failed": "複製失敗 — 請直接選取文字",
+   "copy_unsupported": "此環境不支援複製",
+   "wind_on": "風：開",
+   "wind_off": "風：關",
+   "theme_follow": "主題跟隨東京的日夜 — 點擊自行選擇",
+   "theme_choice": "主題：由你選擇"
+  }
+ },
+ "zh-hans": {
+  "site": {
+   "name": "Trịnh Ngọc Diệu",
+   "skip": "跳至内容",
+   "home_aria": "Trịnh Ngọc Diệu — 首页",
+   "nav": {
+    "projects": "项目",
+    "books": "书",
+    "activity": "近况",
+    "transfer": "转账",
+    "contact": "联系"
+   },
+   "theme_btn": "切换深色模式",
+   "lang_label": "语言",
+   "wind_on": "风：开",
+   "wind_off": "风：关",
+   "keys": "按键 {1}–{5} 切换页面 · {H} 首页 · {T} 主题 · {W} 风",
+   "living": "在日本东京生活与工作。",
+   "built": "纯手工打造 — 不用框架，一个 WebGL 着色器，实时风况来自 {openmeteo}",
+   "source": "源码 ↗",
+   "banner": "本页也有简体中文版。",
+   "banner_switch": "切换至简体中文",
+   "banner_dismiss": "关闭"
+  },
+  "home": {
+   "title": "Trịnh Ngọc Diệu — 东京",
+   "og_title": "Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 的个人网站 — 在东京生活与工作，打造语言与法律领域的小型 AI 产品。项目、书，以及打个招呼的地方。",
+   "readout_aria": "此刻的东京",
+   "tokyo": "东京",
+   "readout_wind": "风速 {wind} · 风向 {dir}",
+   "eyebrow": "— 我是 Diệu",
+   "lede": "我在<strong>日本东京</strong>生活与工作，打造小型的 AI 产品：学日语的、越南法律的，以及让 AI 拥有更好上下文的。在互联网的这个小角落，我分享所学、生活经验，以及几本喜欢的书。",
+   "see_projects": "看看项目",
+   "say_hello": "打个招呼",
+   "bf_default": [
+    "轻风",
+    "脸上感到有风；树叶沙沙作响。"
+   ],
+   "bf_connecting": "正在连接东京的风…",
+   "wind_from": "风向 {dir}",
+   "default_breeze": "默认风况",
+   "manual": " · 由你操控，稍后回到实时风况",
+   "steer": "操控风向",
+   "photo_alt": "Trịnh Ngọc Diệu 在寺庙屋顶与绿树前微笑",
+   "about_h": "离开键盘",
+   "about_meta": "骑车 · 茶 · 语言",
+   "cycling_label": "晴天",
+   "cycling_h": "骑车",
+   "cycling_p": "我喜欢在晴天骑车，细细品味微风的气息。",
+   "tea_h": "茶",
+   "tea_p": "我也很爱喝茶，手边通常都有一杯。",
+   "lang_h": "语言",
+   "lang_p": "还有学语言 — xin chào、こんにちは、hello、안녕하세요、你好。欢迎发个消息，只是打个招呼也好。",
+   "now_h": "此刻，东京",
+   "open_map": "打开地图 ↗",
+   "now_time": "东京现在是 {clock}",
+   "now_wx": "，{temp}，{cond}。风从{dir}吹来，{wind}：{desc}",
+   "now_fail": "。目前无法获取实时天气。",
+   "now_meta": "天气：Open-Meteo，每 10 分钟更新",
+   "send_message": "发送消息",
+   "projects_h": "项目",
+   "all_projects": "所有项目 →",
+   "sunarc": "今日东京的太阳轨迹"
+  },
+  "projects": {
+   "title": "项目 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 的项目：cardgo.ai（AI 上下文卡片）、unihongo.com（日语 AI 老师）、chatluat.com（越南法律 AI）。",
+   "meta": "个人 &amp; 社区 · 3 个进行中",
+   "h": "项目",
+   "lede": "我目前正在做几个个人与社区项目。如果你感兴趣或想一起合作，{contact}。",
+   "contact_link": "欢迎联系我",
+   "kinds": [
+    "卡片",
+    "语言",
+    "法律"
+   ],
+   "taglines": [
+    "AI 上下文卡片",
+    "日语 AI 老师",
+    "越南法律 AI"
+   ],
+   "aria": "项目卡片"
+  },
+  "books": {
+   "title": "书 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 正在读的书 — 由 Goodreads 自动更新。",
+   "meta": "来源 · Goodreads · 自动更新",
+   "h": "书",
+   "lede": "我的书架，由{goodreads}自动更新。",
+   "goodreads_link": "我的 Goodreads 页面",
+   "reading_now": "正在读",
+   "recently_read": "最近读完",
+   "fail": "目前无法加载书架。",
+   "open_shelf": "打开我的 Goodreads 书架 ↗",
+   "covers": "封面与书名来自{goodreads}",
+   "covers_link": "我的 Goodreads 书架 ↗",
+   "aria": "书架"
+  },
+  "activity": {
+   "title": "近况 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 在 X 上的帖子，手动挑选。",
+   "meta": "来源 · X（Twitter） · 手动挑选",
+   "h": "近况",
+   "lede": "从{x}挑选的几条帖子。",
+   "x_link": "我的 X（Twitter）页面",
+   "posts_by": "@trinhngocdieu 的帖子 ↗",
+   "not_loading": "没有显示？",
+   "open_x": "打开我的 X 主页 ↗",
+   "aria": "最近帖子",
+   "curated_note": "X 不再向未登录的访客显示时间线，因此这里的帖子是手动挑选的。",
+   "follow": "在 X 上关注 @trinhngocdieu ↗",
+   "empty": "还没有列出帖子 — 欢迎在 X 上关注。"
+  },
+  "transfer": {
+   "title": "转账 — Trịnh Ngọc Diệu",
+   "desc": "Trịnh Ngọc Diệu 的付款与转账信息 — ACB 银行与 PayPay。",
+   "meta": "银行 · PayPay",
+   "h": "转账",
+   "lede": "这里整理了我的付款与转账信息，需要时方便查阅。",
+   "slip": "转账单 · Trinh Ngoc Dieu",
+   "name": "姓名",
+   "acb": "ACB 银行",
+   "paypay": "PayPay",
+   "copy": "复制",
+   "acb_vn": "ACB · 越南",
+   "paypay_jp": "PayPay · 日本",
+   "aria": "转账信息"
+  },
+  "contact": {
+   "title": "联系 — Trịnh Ngọc Diệu",
+   "desc": "向 Trịnh Ngọc Diệu 打个招呼 — 电子邮件、Messenger 与其他地方。",
+   "meta": "东京 · 日本",
+   "h": "联系",
+   "lede": "谢谢你来到我的个人网站。在这广阔的互联网世界里，我们能在这里相遇。",
+   "postcard": "明信片",
+   "msg1": "亲爱的朋友：",
+   "msg2": "你可以留言，或只是说一声“祝你有美好的一天”。在人生这段旅程里，让我们成为朋友吧！",
+   "msg3": "— Diệu，于东京",
+   "email": "电子邮件",
+   "messenger": "Messenger",
+   "city": "城市",
+   "tokyo": "日本东京",
+   "send_message": "发送消息",
+   "email_me": "给我发邮件",
+   "elsewhere": "其他地方",
+   "aria": "明信片"
+  },
+  "notfound": {
+   "title": "找不到页面 — Trịnh Ngọc Diệu",
+   "desc": "这个页面随风飘走了。",
+   "meta": "错误 404 · 找不到",
+   "lede": "你要找的页面随风飘走了 — 可能是网址输错，或是链接已经过期。",
+   "back_home": "回首页",
+   "see_projects": "看看项目"
+  },
+  "dyn": {
+   "beaufort": [
+    [
+     "无风",
+     "烟直上。"
+    ],
+    [
+     "软风",
+     "烟能表示风向，但风向标不动。"
+    ],
+    [
+     "轻风",
+     "脸上感到有风；树叶沙沙作响。"
+    ],
+    [
+     "微风",
+     "树叶和小枝不停摇动。"
+    ],
+    [
+     "和风",
+     "扬起灰尘和纸张；小树枝摇动。"
+    ],
+    [
+     "清风",
+     "有叶的小树开始摇摆。"
+    ],
+    [
+     "强风",
+     "大树枝摇动；撑伞困难。"
+    ],
+    [
+     "疾风",
+     "整棵树摇动；迎风行走不便。"
+    ],
+    [
+     "大风",
+     "小树枝折断；行走困难。"
+    ],
+    [
+     "烈风",
+     "建筑物有轻微损坏。"
+    ],
+    [
+     "狂风",
+     "树木连根拔起；损坏相当严重。"
+    ],
+    [
+     "暴风",
+     "大范围损坏。"
+    ],
+    [
+     "飓风",
+     "毁灭性破坏。"
+    ]
+   ],
+   "wmo": [
+    "晴朗",
+    "大致晴朗",
+    "局部多云",
+    "阴天",
+    "雾",
+    "雾凇",
+    "小毛毛雨",
+    "毛毛雨",
+    "浓毛毛雨",
+    "冻毛毛雨",
+    "冻毛毛雨",
+    "小雨",
+    "雨",
+    "大雨",
+    "冻雨",
+    "冻雨",
+    "小雪",
+    "雪",
+    "大雪",
+    "雪粒",
+    "小阵雨",
+    "阵雨",
+    "大阵雨",
+    "阵雪",
+    "阵雪",
+    "雷雨",
+    "雷雨伴冰雹",
+    "雷雨伴冰雹"
+   ],
+   "live_note": "实时 — 本页的微风跟随东京的风",
+   "live_fail": "无法获取实时风况 — 显示默认风况",
+   "sun_up": "日出后 · 日落 {t}",
+   "twilight": "暮光",
+   "sun_down": "日落后 · 日出 {t}",
+   "golden_rose": "黄金时刻 · 日出 {t}",
+   "golden_sets": "黄金时刻 · 日落 {t}",
+   "copied": "已复制 {v}",
+   "copied_btn": "已复制",
+   "copy": "复制",
+   "copy_failed": "复制失败 — 请直接选择文字",
+   "copy_unsupported": "此环境不支持复制",
+   "wind_on": "风：开",
+   "wind_off": "风：关",
+   "theme_follow": "主题跟随东京的昼夜 — 点击自行选择",
+   "theme_choice": "主题：由你选择"
+  }
+ }
+}

@@ -11,6 +11,9 @@
     get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   };
+  var T = window.I18N || {};
+  function tr(k, def) { return T[k] != null ? T[k] : def; }
+  function tpl(k, def, vars) { var s = tr(k, def); for (var v in vars) s = s.replace('{' + v + '}', vars[v]); return s; }
 
   /* ---------- the Tokyo sun: drives the default theme, the sky glow and the sun arc ---------- */
   var LAT = 35.6762 * Math.PI / 180, LON = 139.6503;
@@ -42,9 +45,9 @@
   function toggleTheme() {
     var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     store.set('theme', t); applyTheme(t);
-    $$('.theme-btn').forEach(function (b) { b.title = 'Theme: your choice'; });
+    $$('.theme-btn').forEach(function (b) { b.title = tr('theme_choice', 'Theme: your choice'); });
   }
-  $$('.theme-btn').forEach(function (b) { b.addEventListener('click', toggleTheme); b.title = store.get('theme') ? 'Theme: your choice' : 'Theme follows Tokyo’s daylight — click to choose'; });
+  $$('.theme-btn').forEach(function (b) { b.addEventListener('click', toggleTheme); b.title = store.get('theme') ? tr('theme_choice', 'Theme: your choice') : tr('theme_follow', 'Theme follows Tokyo’s daylight — click to choose'); });
   setInterval(autoTheme, 60000);
 
   /* ---------- sky glow, daylight readout, sun arc ---------- */
@@ -64,8 +67,8 @@
       skyEl.style.setProperty('--sun-color', 'rgb(' + col + ')');
       skyEl.style.setProperty('--sun-a', a.toFixed(2));
     }
-    var label = e > 0 ? 'Sun up · sets ' + hhmm(s.sunset) : (e > -6 ? 'Twilight' : 'Sun down · rises ' + hhmm(s.sunrise));
-    if (e > 0 && e < 8) label = 'Golden hour · ' + (f < 0.5 ? 'rose ' + hhmm(s.sunrise) : 'sets ' + hhmm(s.sunset));
+    var label = e > 0 ? tpl('sun_up', 'Sun up · sets {t}', { t: hhmm(s.sunset) }) : (e > -6 ? tr('twilight', 'Twilight') : tpl('sun_down', 'Sun down · rises {t}', { t: hhmm(s.sunrise) }));
+    if (e > 0 && e < 8) label = f < 0.5 ? tpl('golden_rose', 'Golden hour · rose {t}', { t: hhmm(s.sunrise) }) : tpl('golden_sets', 'Golden hour · sets {t}', { t: hhmm(s.sunset) });
     setText('[data-daylight]', label);
     $$('.sunarc').forEach(function (svg) {
       var th = Math.PI * (1 - Math.max(-0.35, Math.min(1.35, f)));
@@ -82,7 +85,7 @@
   /* ---------- wind toggle ---------- */
   function setWindEnabled(on, persist) {
     root.setAttribute('data-field', on ? 'on' : 'off');
-    $$('[data-wind-toggle]').forEach(function (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.querySelector('span').textContent = on ? 'Wind on' : 'Wind off'; });
+    $$('[data-wind-toggle]').forEach(function (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.querySelector('span').textContent = on ? tr('wind_on', 'Wind on') : tr('wind_off', 'Wind off'); });
     if (window.WIND) window.WIND.setEnabled(on);
     if (persist) store.set('wind', on ? 'on' : 'off');
   }
@@ -127,22 +130,15 @@
   }
 
   /* ---------- live wind (Open-Meteo, Tokyo) ---------- */
-  var BEAUFORT = [
-    [1, 'Calm', 'smoke rises vertically.'],
-    [5, 'Light air', 'smoke drifts, wind vanes stay still.'],
-    [11, 'Light breeze', 'wind felt on the face; leaves rustle.'],
-    [19, 'Gentle breeze', 'leaves and small twigs in constant motion.'],
-    [28, 'Moderate breeze', 'raises dust and loose paper; small branches move.'],
-    [38, 'Fresh breeze', 'small trees in leaf begin to sway.'],
-    [49, 'Strong breeze', 'large branches in motion; umbrellas are a struggle.'],
-    [61, 'Near gale', 'whole trees in motion; walking against it is an effort.'],
-    [74, 'Gale', 'twigs break off trees; progress impeded.'],
-    [88, 'Strong gale', 'slight structural damage.'],
-    [102, 'Storm', 'trees uprooted; considerable damage.'],
-    [117, 'Violent storm', 'widespread damage.'],
-    [1e9, 'Hurricane', 'devastation.']
-  ];
-  var WMO = { 0: 'clear', 1: 'mainly clear', 2: 'partly cloudy', 3: 'overcast', 45: 'fog', 48: 'rime fog', 51: 'light drizzle', 53: 'drizzle', 55: 'dense drizzle', 56: 'freezing drizzle', 57: 'freezing drizzle', 61: 'light rain', 63: 'rain', 65: 'heavy rain', 66: 'freezing rain', 67: 'freezing rain', 71: 'light snow', 73: 'snow', 75: 'heavy snow', 77: 'snow grains', 80: 'light showers', 81: 'showers', 82: 'heavy showers', 85: 'snow showers', 86: 'snow showers', 95: 'thunderstorm', 96: 'thunderstorm with hail', 99: 'thunderstorm with hail' };
+  var BEAUFORT_KMH = [1, 5, 11, 19, 28, 38, 49, 61, 74, 88, 102, 117, 1e9];
+  var BEAUFORT = T.beaufort || [
+    ['Calm', 'smoke rises vertically.'], ['Light air', 'smoke drifts, wind vanes stay still.'], ['Light breeze', 'wind felt on the face; leaves rustle.'],
+    ['Gentle breeze', 'leaves and small twigs in constant motion.'], ['Moderate breeze', 'raises dust and loose paper; small branches move.'],
+    ['Fresh breeze', 'small trees in leaf begin to sway.'], ['Strong breeze', 'large branches in motion; umbrellas are a struggle.'],
+    ['Near gale', 'whole trees in motion; walking against it is an effort.'], ['Gale', 'twigs break off trees; progress impeded.'],
+    ['Strong gale', 'slight structural damage.'], ['Storm', 'trees uprooted; considerable damage.'], ['Violent storm', 'widespread damage.'], ['Hurricane', 'devastation.']];
+  var WMO_CODES = [0, 1, 2, 3, 45, 48, 51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 71, 73, 75, 77, 80, 81, 82, 85, 86, 95, 96, 99];
+  var WMO_TXT = T.wmo || ['clear', 'mainly clear', 'partly cloudy', 'overcast', 'fog', 'rime fog', 'light drizzle', 'drizzle', 'dense drizzle', 'freezing drizzle', 'freezing drizzle', 'light rain', 'rain', 'heavy rain', 'freezing rain', 'freezing rain', 'light snow', 'snow', 'heavy snow', 'snow grains', 'light showers', 'showers', 'heavy showers', 'snow showers', 'snow showers', 'thunderstorm', 'thunderstorm with hail', 'thunderstorm with hail'];
   var COMPASS = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
 
   function setText(sel, v) { $$(sel).forEach(function (n) { n.textContent = v; }); }
@@ -151,16 +147,16 @@
     var spd = Math.round(cur.wind_speed_10m), dir = Math.round(cur.wind_direction_10m);
     live.dir = dir; live.speed = spd; live.cur = cur; live.isLive = isLive;
     var manual = !!$('.rose.manual');
-    var b = 0; while (b < BEAUFORT.length - 1 && spd > BEAUFORT[b][0]) b++;
+    var b = 0; while (b < BEAUFORT_KMH.length - 1 && spd > BEAUFORT_KMH[b]) b++;
     var comp = COMPASS[Math.round(dir / 22.5) % 16];
     setText('[data-wind]', spd + ' km/h');
     setText('[data-dir]', comp + ' ' + dir + '°');
     if (typeof cur.temperature_2m === 'number') setText('[data-temp]', Math.round(cur.temperature_2m) + '°C');
-    if (cur.weather_code in WMO) setText('[data-cond]', WMO[cur.weather_code]);
+    var wi = WMO_CODES.indexOf(cur.weather_code); if (wi >= 0) setText('[data-cond]', WMO_TXT[wi]);
     setText('[data-bf-n]', 'F' + b);
-    setText('[data-bf-name]', BEAUFORT[b][1]);
-    setText('[data-bf-desc]', BEAUFORT[b][2]);
-    setText('[data-bf-note]', isLive ? 'Live — this page’s breeze follows Tokyo’s wind' : 'Live wind unavailable — showing a default breeze');
+    setText('[data-bf-name]', BEAUFORT[b][0]);
+    setText('[data-bf-desc]', BEAUFORT[b][1]);
+    setText('[data-bf-note]', isLive ? tr('live_note', 'Live — this page’s breeze follows Tokyo’s wind') : tr('live_fail', 'Live wind unavailable — showing a default breeze'));
     if (manual) return;
     $$('.rose').forEach(function (r) { r.style.setProperty('--deg', dir + 'deg'); });
     $$('[data-rose-dir]').forEach(function (n) { n.textContent = comp + ' ' + dir + '°'; });
@@ -240,8 +236,8 @@
 
   /* ---------- greetings ---------- */
   $$('[data-greet]').forEach(function (el) {
-    var list = ['Xin chào', 'こんにちは', 'Hello'], i = 0;
-    var langs = ['vi', 'ja', 'en'];
+    var list = ['Xin chào', 'こんにちは', 'Hello', '안녕하세요', '你好'], i = 0;
+    var langs = ['vi', 'ja', 'en', 'ko', 'zh'];
     if (reduce) return;
     setInterval(function () {
       el.classList.add('out');
@@ -344,9 +340,9 @@
   $$('[data-copy]').forEach(function (b) {
     b.addEventListener('click', function () {
       var v = b.getAttribute('data-copy');
-      var done = function () { b.setAttribute('data-done', ''); b.textContent = 'Copied'; say('Copied ' + v); setTimeout(function () { b.removeAttribute('data-done'); b.textContent = 'Copy'; }, 1800); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, function () { say('Copy failed — select the text instead'); });
-      else say('Copy not supported here');
+      var done = function () { b.setAttribute('data-done', ''); b.textContent = tr('copied_btn', 'Copied'); say(tpl('copied', 'Copied {v}', { v: v })); setTimeout(function () { b.removeAttribute('data-done'); b.textContent = tr('copy', 'Copy'); }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, function () { say(tr('copy_failed', 'Copy failed — select the text instead')); });
+      else say(tr('copy_unsupported', 'Copy not supported here'));
     });
   });
 
@@ -357,7 +353,7 @@
     var t = e.target; if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
     var k = e.key.toLowerCase();
     if (k >= '1' && k <= '9') { var l = links[parseInt(k, 10) - 1]; if (l) location.href = l.href; }
-    else if (k === 'h' || k === '0') location.href = '/';
+    else if (k === 'h' || k === '0') location.href = (window.SITE && window.SITE.alts && window.SITE.alts[window.SITE.lang]) || '/';
     else if (k === 't') toggleTheme();
     else if (k === 'w') setWindEnabled(root.getAttribute('data-field') === 'off', true);
   });
@@ -381,6 +377,74 @@
       shelves.forEach(function (el) { var ok = !!$('img', el); el.hidden = !ok; any = any || ok; });
       $$('[data-shelves-fail]').forEach(function (n) { n.hidden = any; });
     });
+  }
+
+  /* ---------- languages: switcher, remembered choice, gentle suggestion ---------- */
+  var SITEI = window.SITE;
+  if (SITEI && SITEI.alts) {
+    var langOf = function (path) { for (var k in SITEI.alts) if (SITEI.alts[k] === path) return k; return SITEI.lang; };
+    var detect = function () {
+      var ls = navigator.languages || [navigator.language || ''];
+      for (var i = 0; i < ls.length; i++) {
+        var l = String(ls[i]).toLowerCase();
+        if (l.indexOf('vi') === 0) return 'vi';
+        if (l.indexOf('ja') === 0) return 'ja';
+        if (l.indexOf('ko') === 0) return 'ko';
+        if (l.indexOf('zh') === 0) return /zh-(tw|hk|mo|hant)/.test(l) ? 'zh-hant' : 'zh-hans';
+        if (l.indexOf('en') === 0) return 'en';
+      }
+      return null;
+    };
+    // On arrival from outside the site, open the language you chose before — or, failing that, your browser's language.
+    var stored = store.get('lang'), entering = true, guarded = false;
+    try { entering = !d.referrer || new URL(d.referrer).origin !== location.origin; } catch (e) {}
+    try { guarded = !!sessionStorage.getItem('lang-auto'); } catch (e) {}
+    var target = (stored && SITEI.alts[stored]) ? stored : detect();
+    if (target && SITEI.alts[target] && target !== SITEI.lang && entering && !guarded) {
+      try { sessionStorage.setItem('lang-auto', '1'); } catch (e) {}
+      location.replace(SITEI.alts[target]);
+    }
+    // the chooser
+    $$('[data-lang]').forEach(function (box) {
+      var btn = $('[data-lang-btn]', box), menu = $('[data-lang-menu]', box), items = $$('.lang-item', menu), head = $('[data-lang-greet]', menu);
+      if (!btn || !menu) return;
+      var current = head ? head.textContent : '', closing = 0;
+      var open = function () { clearTimeout(closing); menu.hidden = false; btn.setAttribute('aria-expanded', 'true'); requestAnimationFrame(function () { menu.classList.add('open'); }); };
+      var close = function () { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); closing = setTimeout(function () { menu.hidden = true; }, 220); };
+      btn.addEventListener('click', function () {
+        if (menu.hidden) { open(); var cur = items.filter(function (i) { return i.getAttribute('aria-checked') === 'true'; })[0]; setTimeout(function () { (cur || items[0]).focus(); }, 60); }
+        else close();
+      });
+      d.addEventListener('pointerdown', function (e) { if (!menu.hidden && !box.contains(e.target)) close(); });
+      d.addEventListener('keydown', function (e) {
+        if (menu.hidden) return;
+        if (e.key === 'Escape') { close(); btn.focus(); return; }
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Home' || e.key === 'End') {
+          e.preventDefault(); var i = items.indexOf(d.activeElement), n = items.length;
+          if (e.key === 'Home') i = 0; else if (e.key === 'End') i = n - 1; else i = (i + (e.key === 'ArrowDown' ? 1 : -1) + n) % n;
+          items[i].focus();
+        }
+      });
+      items.forEach(function (it) {
+        var show = function () { if (head) head.textContent = it.getAttribute('data-hello'); };
+        it.addEventListener('mouseenter', show); it.addEventListener('focus', show);
+        it.addEventListener('click', function () { store.set('lang', it.getAttribute('data-lang')); });
+      });
+      menu.addEventListener('mouseleave', function () { if (head && !menu.contains(d.activeElement)) head.textContent = current; });
+    });
+  }
+
+  /* ---------- Activity: hand-picked X posts (X no longer serves timelines to signed-out visitors) ---------- */
+  var postsEl = $('[data-posts]');
+  if (postsEl && window.fetch) {
+    var showEmpty = function () { $$('[data-posts-empty]').forEach(function (n) { n.hidden = false; }); };
+    fetch('/content/posts.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (j) {
+      var list = (j && j.posts || []).filter(function (u) { return /^https:\/\/(x|twitter)\.com\/[A-Za-z0-9_]+\/status\/\d+/.test(u); });
+      if (!list.length) { showEmpty(); return; }
+      var theme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      postsEl.innerHTML = list.map(function (u) { var safe = u.replace(/[<>"&]/g, ''); return '<blockquote class="twitter-tweet" data-dnt="true" data-theme="' + theme + '"><a href="' + safe + '">' + safe + '</a></blockquote>'; }).join('');
+      var s = d.createElement('script'); s.src = 'https://platform.twitter.com/widgets.js'; s.async = true; s.charset = 'utf-8'; d.body.appendChild(s);
+    }).catch(showEmpty);
   }
 
   /* ---------- current year ---------- */

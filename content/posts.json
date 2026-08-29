@@ -1,0 +1,4 @@
+{
+ "_help": "X post URLs to show on the Activity page, newest first. No rebuild needed — the page reads this file.",
+ "posts": []
+}
