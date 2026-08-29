@@ -24,7 +24,7 @@ GREET = {'en': 'Hello', 'vi': 'Xin chào', 'ja': 'こんにちは', 'ko': '안�
 CODE = {'en': 'EN', 'vi': 'VI', 'ja': 'JA', 'ko': 'KO', 'zh-hant': '繁', 'zh-hans': '简'}
 GLOBE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>'
 MARKS = {'projects': '作品', 'books': '本', 'activity': '近況', 'transfer': '振込', 'contact': 'はがき'}   # decorative stamps; dropped where the title is already CJK
-JP_TEXT = '鄭玉妙印札語律風振込東京作品本近況郵便はがき迷子こんにちは茶'
+JP_TEXT = '鄭玉妙印札語律風振込東京埼玉作品本近況郵便はがき迷子こんにちは茶'
 FONT_CSS = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap'
 JP_CSS = 'https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@700&text=' + JP_TEXT + '&display=swap'
 
@@ -287,7 +287,7 @@ def home_body(lang):
   {deck(P)}
 </section>'''
 
-JSONLD = '''<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Trịnh Ngọc Diệu","alternateName":"Trinh Ngoc Dieu","url":"https://trinhngocdieu.com/","image":"https://trinhngocdieu.com/assets/img/portrait.jpg","email":"mailto:contact@trinhngocdieu.com","address":{"@type":"PostalAddress","addressLocality":"Tokyo","addressCountry":"JP"},"sameAs":["https://www.facebook.com/trinhngocdieu","https://x.com/trinhngocdieu","https://www.linkedin.com/in/trinhngocdieu","https://github.com/trinhngocdieu","https://www.goodreads.com/user/show/34804458"]}</script>
+JSONLD = '''<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Trịnh Ngọc Diệu","alternateName":"Trinh Ngoc Dieu","url":"https://trinhngocdieu.com/","image":"https://trinhngocdieu.com/assets/img/portrait.jpg","email":"mailto:contact@trinhngocdieu.com","address":{"@type":"PostalAddress","addressLocality":"Saitama","addressCountry":"JP"},"workLocation":{"@type":"Place","name":"Tokyo","address":{"@type":"PostalAddress","addressLocality":"Tokyo","addressCountry":"JP"}},"sameAs":["https://www.facebook.com/trinhngocdieu","https://x.com/trinhngocdieu","https://www.linkedin.com/in/trinhngocdieu","https://github.com/trinhngocdieu","https://www.goodreads.com/user/show/34804458"]}</script>
 '''
 
 def projects_body(lang):
@@ -343,7 +343,7 @@ def contact_body(lang):
         <div class="lines">
           <div class="line"><span class="k">{C["email"]}</span><a href="mailto:contact@trinhngocdieu.com">contact@trinhngocdieu.com</a></div>
           <div class="line"><span class="k">{C["messenger"]}</span><a href="https://m.me/trinhngocdieu" target="_blank" rel="noopener">m.me/trinhngocdieu</a></div>
-          <div class="line"><span class="k">{C["city"]}</span><span>{C["tokyo"]} · <span lang="ja">東京</span></span></div>
+          <div class="line"><span class="k">{C["city"]}</span><span>{C["tokyo"]} · <span lang="ja">埼玉</span></span></div>
         </div>
       </div>
     </div>
