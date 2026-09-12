@@ -18,7 +18,7 @@ vi/ ja/ ko/ zh-hant/ zh-hans/                                   the same pages i
 project/ book/ post/ message/   redirects from the old URLs
 assets/css/site.css   All styles (design tokens at the top; dark theme under html[data-theme="dark"])
 assets/js/wind.js     WebGL particle wind field (ink strokes, curl noise, live wind, gusts, cursor); exposes window.WIND
-assets/js/site.js     Theme (follows Tokyo daylight), rulers, clock, live weather, sun arc, compass steering, languages, Goodreads shelves, X posts
+assets/js/site.js     Theme (follows Kawaguchi daylight), rulers, clock, live weather, sun arc, compass steering, languages, Goodreads shelves, X posts
 assets/img/           portrait.jpg, og.jpg, icon-192.png
 test/                 unrelated video-player test page, left as-is
 ```
@@ -29,7 +29,7 @@ test/                 unrelated video-player test page, left as-is
 - Activity: add X post URLs to `content/posts.json` (X no longer serves timelines to signed-out visitors; single posts still embed).
 - Projects: the three cards are defined in `tools/build.py` (`deck`), taglines per language in `strings.json`.
 - Seal glyphs (鄭玉妙印) are in `tools/build.py` (`seal`).
-- Live weather comes from Open-Meteo (free, no key) for Tokyo; if the request fails the page shows a default breeze and says so.
+- Live weather comes from Open-Meteo (free, no key) for Kawaguchi, Saitama; if the request fails the page shows a default breeze and says so.
 - Books are pulled from Goodreads' grid widget (`currently-reading` and `read` shelves) in `site.js`.
 - Google AdSense is loaded from one `<script>` line in each page's `<head>` (see `tools/build.py`); delete it to remove ads.
 

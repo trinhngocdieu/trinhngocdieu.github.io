@@ -199,7 +199,7 @@ def shell(lang, page, *, title, desc, body, head_extra='', current=None, og_titl
       <div>
         <p class="who" lang="vi">Trịnh Ngọc Diệu</p>
         <p>{site["living"]}</p>
-        <p class="meta">35.6762° N, 139.6503° E · <span data-clock>--:--:--</span> JST<span data-wx-live> · {fmt(T["home"]["readout_wind"], wind="<span data-wind>—</span>", dir="<span data-dir>—</span>")}</span></p>
+        <p class="meta">35.8078° N, 139.7242° E · <span data-clock>--:--:--</span> JST<span data-wx-live> · {fmt(T["home"]["readout_wind"], wind="<span data-wind>—</span>", dir="<span data-dir>—</span>")}</span></p>
       </div>
       <ul class="list">
         {''.join(f'<li><a href="{href(lang, p)}">{site["nav"][p]}</a></li>' for p in PAGES[1:])}
@@ -237,7 +237,7 @@ def home_body(lang):
            '</span><span data-wx-fail hidden>' + H['now_fail'] + '</span>')
     return f'''<section class="wrap hero" aria-labelledby="name">
   <div class="hero-readout readout" aria-label="{H["readout_aria"]}">
-    <span class="live"><b>{H["tokyo"]}</b> 35.68°N 139.65°E</span>
+    <span class="live"><b>{H["place"]}</b> 35.81°N 139.72°E</span>
     <span><b data-clock>--:--:--</b> JST</span>
     <span data-daylight>—</span>
     <span data-wx-live><b data-temp>—</b> <span data-cond>—</span></span>
@@ -271,7 +271,7 @@ def home_body(lang):
 </section>
 
 <section class="wrap section" aria-labelledby="now-h">
-  <div class="section-head reveal"><h2 id="now-h">{H["now_h"]}</h2><span class="meta"><a href="https://www.google.com/maps/place/Tokyo,+Japan" rel="noopener">{H["open_map"]}</a></span></div>
+  <div class="section-head reveal"><h2 id="now-h">{H["now_h"]}</h2><span class="meta"><a href="https://www.google.com/maps/place/Kawaguchi,+Saitama,+Japan" rel="noopener">{H["open_map"]}</a></span></div>
   <div class="now reveal">
     <div>
       <p>{now}</p>

@@ -1,6 +1,6 @@
 /* wind.js — GPU particle wind field (WebGL 1, no dependencies).
  * Particle positions live in an RGBA8 texture (16 bits per axis), advected by
- * curl noise + a global wind vector (Tokyo's live wind, set from site.js) + the cursor.
+ * curl noise + a global wind vector (Kawaguchi's live wind, set from site.js) + the cursor.
  * Trails come from re-drawing the previous frame with a small fade. */
 (function () {
   'use strict';

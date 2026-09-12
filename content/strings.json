@@ -27,8 +27,8 @@
    "title": "Trịnh Ngọc Diệu — Tokyo",
    "og_title": "Trịnh Ngọc Diệu",
    "desc": "Personal website of Trịnh Ngọc Diệu — living in Saitama and working in Tokyo, building small AI products for languages and law. Projects, books, and a way to say hello.",
-   "readout_aria": "Tokyo right now",
-   "tokyo": "Tokyo",
+   "readout_aria": "Kawaguchi right now",
+   "place": "Kawaguchi",
    "readout_wind": "Wind {wind} from {dir}",
    "eyebrow": "— I’m Diệu",
    "lede": "I live in Saitama and work in <strong>Tokyo, Japan</strong>, building small AI products: for learning Japanese, for Vietnamese law, and for giving AI better context. In this small corner of the internet I share what I’ve learnt, my life experiences, and a few favourite books.",
@@ -38,7 +38,7 @@
     "Light breeze",
     "wind felt on the face; leaves rustle."
    ],
-   "bf_connecting": "Connecting to Tokyo’s wind…",
+   "bf_connecting": "Connecting to Kawaguchi’s wind…",
    "wind_from": "Wind from {dir}",
    "default_breeze": "Default breeze",
    "manual": " · steered by you, back to live soon",
@@ -53,16 +53,16 @@
    "tea_p": "I also love drinking tea. A cup is usually within reach.",
    "lang_h": "Languages",
    "lang_p": "And learning languages — xin chào, こんにちは, hello, 안녕하세요, 你好. You might want to send me a message just to say hello.",
-   "now_h": "Now, in Tokyo",
+   "now_h": "Now, in Kawaguchi",
    "open_map": "Open the map ↗",
-   "now_time": "It’s {clock} in Tokyo",
+   "now_time": "It’s {clock} in Kawaguchi",
    "now_wx": ", {temp} and {cond}. The wind is {wind} from {dir}: {desc}",
    "now_fail": ". Live weather is unavailable right now.",
    "now_meta": "Weather: Open-Meteo, refreshed every 10 minutes",
    "send_message": "Send a message",
    "projects_h": "Projects",
    "all_projects": "All projects →",
-   "sunarc": "Today’s sun path over Tokyo"
+   "sunarc": "Today’s sun path over Kawaguchi"
   },
   "projects": {
    "title": "Projects — Trịnh Ngọc Diệu",
@@ -240,7 +240,7 @@
     "thunderstorm with hail",
     "thunderstorm with hail"
    ],
-   "live_note": "Live — this page’s breeze follows Tokyo’s wind",
+   "live_note": "Live — this page’s breeze follows Kawaguchi’s wind",
    "live_fail": "Live wind unavailable — showing a default breeze",
    "sun_up": "Sun up · sets {t}",
    "twilight": "Twilight",
@@ -254,7 +254,7 @@
    "copy_unsupported": "Copy not supported here",
    "wind_on": "Wind on",
    "wind_off": "Wind off",
-   "theme_follow": "Theme follows Tokyo’s daylight — click to choose",
+   "theme_follow": "Theme follows Kawaguchi’s daylight — click to choose",
    "theme_choice": "Theme: your choice"
   }
  },
@@ -286,8 +286,8 @@
    "title": "Trịnh Ngọc Diệu — Tokyo",
    "og_title": "Trịnh Ngọc Diệu",
    "desc": "Trang cá nhân của Trịnh Ngọc Diệu — sống ở Saitama, làm việc tại Tokyo, xây dựng những sản phẩm AI nhỏ cho ngôn ngữ và pháp luật. Dự án, sách, và một nơi để nói lời chào.",
-   "readout_aria": "Tokyo lúc này",
-   "tokyo": "Tokyo",
+   "readout_aria": "Kawaguchi lúc này",
+   "place": "Kawaguchi",
    "readout_wind": "Gió {wind} từ hướng {dir}",
    "eyebrow": "— Mình là Diệu",
    "lede": "Mình đang sống ở Saitama và làm việc tại <strong>Tokyo, Nhật Bản</strong>, xây dựng những sản phẩm AI nhỏ: để học tiếng Nhật, về pháp luật Việt Nam, và để cho AI nhiều ngữ cảnh hơn. Ở góc nhỏ này của Internet, mình chia sẻ những điều đã học, trải nghiệm cuộc sống và vài cuốn sách yêu thích.",
@@ -297,7 +297,7 @@
     "Gió nhẹ",
     "cảm nhận được gió trên mặt; lá cây xào xạc."
    ],
-   "bf_connecting": "Đang kết nối với gió Tokyo…",
+   "bf_connecting": "Đang kết nối với gió Kawaguchi…",
    "wind_from": "Gió từ hướng {dir}",
    "default_breeze": "Gió mặc định",
    "manual": " · bạn đang điều khiển, sẽ trở về gió thật ngay",
@@ -312,16 +312,16 @@
    "tea_p": "Mình cũng rất thích uống trà. Thường lúc nào cũng có một tách bên cạnh.",
    "lang_h": "Ngôn ngữ",
    "lang_p": "Và học ngoại ngữ — xin chào, こんにちは, hello, 안녕하세요, 你好. Bạn có thể nhắn cho mình chỉ để nói một lời chào.",
-   "now_h": "Tokyo lúc này",
+   "now_h": "Kawaguchi lúc này",
    "open_map": "Mở bản đồ ↗",
-   "now_time": "Bây giờ là {clock} ở Tokyo",
+   "now_time": "Bây giờ là {clock} ở Kawaguchi",
    "now_wx": ", {temp}, {cond}. Gió {wind} từ hướng {dir}: {desc}",
    "now_fail": ". Hiện chưa lấy được dữ liệu thời tiết trực tiếp.",
    "now_meta": "Thời tiết: Open-Meteo, cập nhật mỗi 10 phút",
    "send_message": "Gửi tin nhắn",
    "projects_h": "Dự án",
    "all_projects": "Tất cả dự án →",
-   "sunarc": "Đường đi của mặt trời trên Tokyo hôm nay"
+   "sunarc": "Đường đi của mặt trời trên Kawaguchi hôm nay"
   },
   "projects": {
    "title": "Dự án — Trịnh Ngọc Diệu",
@@ -499,7 +499,7 @@
     "dông kèm mưa đá",
     "dông kèm mưa đá"
    ],
-   "live_note": "Trực tiếp — làn gió trên trang này theo gió Tokyo",
+   "live_note": "Trực tiếp — làn gió trên trang này theo gió Kawaguchi",
    "live_fail": "Không có dữ liệu gió trực tiếp — đang hiển thị gió mặc định",
    "sun_up": "Mặt trời đã lên · lặn lúc {t}",
    "twilight": "Chạng vạng",
@@ -513,7 +513,7 @@
    "copy_unsupported": "Trình duyệt không hỗ trợ sao chép",
    "wind_on": "Gió: bật",
    "wind_off": "Gió: tắt",
-   "theme_follow": "Giao diện theo ánh sáng ban ngày ở Tokyo — bấm để tự chọn",
+   "theme_follow": "Giao diện theo ánh sáng ban ngày ở Kawaguchi — bấm để tự chọn",
    "theme_choice": "Giao diện: do bạn chọn"
   }
  },
@@ -545,8 +545,8 @@
    "title": "Trịnh Ngọc Diệu — 東京",
    "og_title": "Trịnh Ngọc Diệu",
    "desc": "Trịnh Ngọc Diệu の個人サイト。埼玉に住み、東京で働きながら、言語と法律のための小さなAIプロダクトを作っています。プロジェクト、本、そしてご挨拶の場所。",
-   "readout_aria": "いまの東京",
-   "tokyo": "東京",
+   "readout_aria": "いまの川口",
+   "place": "川口",
    "readout_wind": "風速 {wind} · 風向 {dir}",
    "eyebrow": "— Diệu です",
    "lede": "埼玉に住み、<strong>東京</strong>で働きながら、小さなAIプロダクトを作っています。日本語学習のため、ベトナム法のため、そしてAIにより良いコンテキストを与えるために。インターネットのこの小さな片隅で、学んだこと、暮らしの経験、そして好きな本をいくつか分かち合います。",
@@ -556,7 +556,7 @@
     "軽風",
     "顔に風を感じる。木の葉が揺れる。"
    ],
-   "bf_connecting": "東京の風に接続中…",
+   "bf_connecting": "川口の風に接続中…",
    "wind_from": "風向 {dir}",
    "default_breeze": "既定の風",
    "manual": " · あなたが操作中。まもなくライブに戻ります",
@@ -571,16 +571,16 @@
    "tea_p": "お茶を飲むのも大好きです。たいてい手の届くところに一杯あります。",
    "lang_h": "語学",
    "lang_p": "そして語学 — xin chào、こんにちは、hello、안녕하세요、你好。ひとこと挨拶するだけでも、メッセージをどうぞ。",
-   "now_h": "いま、東京は",
+   "now_h": "いま、川口は",
    "open_map": "地図を開く ↗",
-   "now_time": "東京は今 {clock}",
+   "now_time": "川口は今 {clock}",
    "now_wx": "、{temp}、{cond}。風は{dir}から {wind}：{desc}",
    "now_fail": "。現在、ライブの天気情報を取得できません。",
    "now_meta": "天気：Open-Meteo、10分ごとに更新",
    "send_message": "メッセージを送る",
    "projects_h": "プロジェクト",
    "all_projects": "すべてのプロジェクト →",
-   "sunarc": "今日の東京の太陽の軌跡"
+   "sunarc": "今日の川口の太陽の軌跡"
   },
   "projects": {
    "title": "プロジェクト — Trịnh Ngọc Diệu",
@@ -758,7 +758,7 @@
     "雹を伴う雷雨",
     "雹を伴う雷雨"
    ],
-   "live_note": "ライブ — このページの風は東京の風に連動しています",
+   "live_note": "ライブ — このページの風は川口の風に連動しています",
    "live_fail": "ライブの風を取得できません — 既定の風を表示中",
    "sun_up": "日の出後 · 日没 {t}",
    "twilight": "薄明",
@@ -772,7 +772,7 @@
    "copy_unsupported": "この環境ではコピーできません",
    "wind_on": "風：オン",
    "wind_off": "風：オフ",
-   "theme_follow": "テーマは東京の昼夜に連動 — クリックで選択",
+   "theme_follow": "テーマは川口の昼夜に連動 — クリックで選択",
    "theme_choice": "テーマ：あなたの選択"
   }
  },
@@ -804,8 +804,8 @@
    "title": "Trịnh Ngọc Diệu — 도쿄",
    "og_title": "Trịnh Ngọc Diệu",
    "desc": "Trịnh Ngọc Diệu의 개인 웹사이트 — 사이타마에 살며 도쿄에서 일하고, 언어와 법률을 위한 작은 AI 제품을 만듭니다. 프로젝트, 책, 그리고 인사를 건넬 곳.",
-   "readout_aria": "지금 도쿄",
-   "tokyo": "도쿄",
+   "readout_aria": "지금 가와구치",
+   "place": "가와구치",
    "readout_wind": "바람 {wind} · {dir}에서",
    "eyebrow": "— 저는 Diệu입니다",
    "lede": "사이타마에 살며 <strong>일본 도쿄</strong>에서 일하고, 작은 AI 제품을 만듭니다: 일본어 학습을 위해, 베트남 법률을 위해, 그리고 AI에 더 나은 맥락을 주기 위해. 인터넷의 이 작은 구석에서 배운 것, 삶의 경험, 그리고 좋아하는 책 몇 권을 나눕니다.",
@@ -815,7 +815,7 @@
     "남실바람",
     "얼굴에 바람이 느껴짐; 나뭇잎이 흔들림."
    ],
-   "bf_connecting": "도쿄의 바람에 연결하는 중…",
+   "bf_connecting": "가와구치의 바람에 연결하는 중…",
    "wind_from": "풍향 {dir}",
    "default_breeze": "기본 바람",
    "manual": " · 직접 조종 중, 곧 실시간으로 돌아갑니다",
@@ -830,16 +830,16 @@
    "tea_p": "차 마시는 것도 무척 좋아합니다. 보통 손 닿는 곳에 한 잔이 있어요.",
    "lang_h": "언어",
    "lang_p": "그리고 언어 배우기 — xin chào, こんにちは, hello, 안녕하세요, 你好. 그냥 인사만 하려고 메시지를 보내셔도 좋습니다.",
-   "now_h": "지금, 도쿄는",
+   "now_h": "지금, 가와구치는",
    "open_map": "지도 열기 ↗",
-   "now_time": "도쿄는 지금 {clock}",
+   "now_time": "가와구치는 지금 {clock}",
    "now_wx": ", {temp}, {cond}. 바람은 {dir}에서 {wind}: {desc}",
    "now_fail": ". 지금은 실시간 날씨를 가져올 수 없습니다.",
    "now_meta": "날씨: Open-Meteo, 10분마다 갱신",
    "send_message": "메시지 보내기",
    "projects_h": "프로젝트",
    "all_projects": "모든 프로젝트 →",
-   "sunarc": "오늘 도쿄의 태양 경로"
+   "sunarc": "오늘 가와구치의 태양 경로"
   },
   "projects": {
    "title": "프로젝트 — Trịnh Ngọc Diệu",
@@ -1017,7 +1017,7 @@
     "우박을 동반한 뇌우",
     "우박을 동반한 뇌우"
    ],
-   "live_note": "실시간 — 이 페이지의 바람은 도쿄의 바람을 따릅니다",
+   "live_note": "실시간 — 이 페이지의 바람은 가와구치의 바람을 따릅니다",
    "live_fail": "실시간 바람을 가져올 수 없음 — 기본 바람 표시 중",
    "sun_up": "해가 떠 있음 · 일몰 {t}",
    "twilight": "황혼",
@@ -1031,7 +1031,7 @@
    "copy_unsupported": "여기서는 복사를 지원하지 않습니다",
    "wind_on": "바람 켜짐",
    "wind_off": "바람 꺼짐",
-   "theme_follow": "테마는 도쿄의 낮과 밤을 따릅니다 — 클릭하여 선택",
+   "theme_follow": "테마는 가와구치의 낮과 밤을 따릅니다 — 클릭하여 선택",
    "theme_choice": "테마: 직접 선택"
   }
  },
@@ -1063,8 +1063,8 @@
    "title": "Trịnh Ngọc Diệu — 東京",
    "og_title": "Trịnh Ngọc Diệu",
    "desc": "Trịnh Ngọc Diệu 的個人網站 — 住在埼玉、在東京工作，打造語言與法律領域的小型 AI 產品。專案、書，以及打聲招呼的地方。",
-   "readout_aria": "此刻的東京",
-   "tokyo": "東京",
+   "readout_aria": "此刻的川口",
+   "place": "川口",
    "readout_wind": "風速 {wind} · 風向 {dir}",
    "eyebrow": "— 我是 Diệu",
    "lede": "我住在埼玉，在<strong>日本東京</strong>工作，打造小型的 AI 產品：學日語的、越南法律的，以及讓 AI 擁有更好脈絡的。在網路的這個小角落，我分享所學、生活經驗，以及幾本喜歡的書。",
@@ -1074,7 +1074,7 @@
     "輕風",
     "臉上感到有風；樹葉沙沙作響。"
    ],
-   "bf_connecting": "正在連線東京的風…",
+   "bf_connecting": "正在連線川口的風…",
    "wind_from": "風向 {dir}",
    "default_breeze": "預設風況",
    "manual": " · 由你操控，稍後回到即時風況",
@@ -1089,16 +1089,16 @@
    "tea_p": "我也很愛喝茶，手邊通常都有一杯。",
    "lang_h": "語言",
    "lang_p": "還有學語言 — xin chào、こんにちは、hello、안녕하세요、你好。歡迎傳個訊息，只是打聲招呼也好。",
-   "now_h": "此刻，東京",
+   "now_h": "此刻，川口",
    "open_map": "開啟地圖 ↗",
-   "now_time": "東京現在是 {clock}",
+   "now_time": "川口現在是 {clock}",
    "now_wx": "，{temp}，{cond}。風從{dir}吹來，{wind}：{desc}",
    "now_fail": "。目前無法取得即時天氣。",
    "now_meta": "天氣：Open-Meteo，每 10 分鐘更新",
    "send_message": "傳送訊息",
    "projects_h": "專案",
    "all_projects": "所有專案 →",
-   "sunarc": "今日東京的太陽軌跡"
+   "sunarc": "今日川口的太陽軌跡"
   },
   "projects": {
    "title": "專案 — Trịnh Ngọc Diệu",
@@ -1276,7 +1276,7 @@
     "雷雨伴冰雹",
     "雷雨伴冰雹"
    ],
-   "live_note": "即時 — 本頁的微風跟隨東京的風",
+   "live_note": "即時 — 本頁的微風跟隨川口的風",
    "live_fail": "無法取得即時風況 — 顯示預設風況",
    "sun_up": "日出後 · 日落 {t}",
    "twilight": "暮光",
@@ -1290,7 +1290,7 @@
    "copy_unsupported": "此環境不支援複製",
    "wind_on": "風：開",
    "wind_off": "風：關",
-   "theme_follow": "主題跟隨東京的日夜 — 點擊自行選擇",
+   "theme_follow": "主題跟隨川口的日夜 — 點擊自行選擇",
    "theme_choice": "主題：由你選擇"
   }
  },
@@ -1322,8 +1322,8 @@
    "title": "Trịnh Ngọc Diệu — 东京",
    "og_title": "Trịnh Ngọc Diệu",
    "desc": "Trịnh Ngọc Diệu 的个人网站 — 住在埼玉、在东京工作，打造语言与法律领域的小型 AI 产品。项目、书，以及打个招呼的地方。",
-   "readout_aria": "此刻的东京",
-   "tokyo": "东京",
+   "readout_aria": "此刻的川口",
+   "place": "川口",
    "readout_wind": "风速 {wind} · 风向 {dir}",
    "eyebrow": "— 我是 Diệu",
    "lede": "我住在埼玉，在<strong>日本东京</strong>工作，打造小型的 AI 产品：学日语的、越南法律的，以及让 AI 拥有更好上下文的。在互联网的这个小角落，我分享所学、生活经验，以及几本喜欢的书。",
@@ -1333,7 +1333,7 @@
     "轻风",
     "脸上感到有风；树叶沙沙作响。"
    ],
-   "bf_connecting": "正在连接东京的风…",
+   "bf_connecting": "正在连接川口的风…",
    "wind_from": "风向 {dir}",
    "default_breeze": "默认风况",
    "manual": " · 由你操控，稍后回到实时风况",
@@ -1348,16 +1348,16 @@
    "tea_p": "我也很爱喝茶，手边通常都有一杯。",
    "lang_h": "语言",
    "lang_p": "还有学语言 — xin chào、こんにちは、hello、안녕하세요、你好。欢迎发个消息，只是打个招呼也好。",
-   "now_h": "此刻，东京",
+   "now_h": "此刻，川口",
    "open_map": "打开地图 ↗",
-   "now_time": "东京现在是 {clock}",
+   "now_time": "川口现在是 {clock}",
    "now_wx": "，{temp}，{cond}。风从{dir}吹来，{wind}：{desc}",
    "now_fail": "。目前无法获取实时天气。",
    "now_meta": "天气：Open-Meteo，每 10 分钟更新",
    "send_message": "发送消息",
    "projects_h": "项目",
    "all_projects": "所有项目 →",
-   "sunarc": "今日东京的太阳轨迹"
+   "sunarc": "今日川口的太阳轨迹"
   },
   "projects": {
    "title": "项目 — Trịnh Ngọc Diệu",
@@ -1535,7 +1535,7 @@
     "雷雨伴冰雹",
     "雷雨伴冰雹"
    ],
-   "live_note": "实时 — 本页的微风跟随东京的风",
+   "live_note": "实时 — 本页的微风跟随川口的风",
    "live_fail": "无法获取实时风况 — 显示默认风况",
    "sun_up": "日出后 · 日落 {t}",
    "twilight": "暮光",
@@ -1549,7 +1549,7 @@
    "copy_unsupported": "此环境不支持复制",
    "wind_on": "风：开",
    "wind_off": "风：关",
-   "theme_follow": "主题跟随东京的昼夜 — 点击自行选择",
+   "theme_follow": "主题跟随川口的昼夜 — 点击自行选择",
    "theme_choice": "主题：由你选择"
   }
  }

@@ -1,4 +1,4 @@
-/* site.js — behaviours: theme, graticule, Tokyo clock + live wind, name gust, reveals, copy, shortcuts. */
+/* site.js — behaviours: theme, graticule, JST clock + live wind, name gust, reveals, copy, shortcuts. */
 (function () {
   'use strict';
   var d = document, root = d.documentElement;
@@ -15,8 +15,8 @@
   function tr(k, def) { return T[k] != null ? T[k] : def; }
   function tpl(k, def, vars) { var s = tr(k, def); for (var v in vars) s = s.replace('{' + v + '}', vars[v]); return s; }
 
-  /* ---------- the Tokyo sun: drives the default theme, the sky glow and the sun arc ---------- */
-  var LAT = 35.6762 * Math.PI / 180, LON = 139.6503;
+  /* ---------- the Kawaguchi sun: drives the default theme, the sky glow and the sun arc ---------- */
+  var LAT = 35.8078 * Math.PI / 180, LON = 139.7242;
   function solar(date) {
     var d = new Date((date || new Date()).getTime() + 9 * 3600e3);            // JST, read through the UTC getters
     var N = Math.floor((Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - Date.UTC(d.getUTCFullYear(), 0, 0)) / 864e5);
@@ -32,7 +32,7 @@
   }
   function hhmm(m) { m = ((m % 1440) + 1440) % 1440; var h = Math.floor(m / 60), mm = Math.round(m % 60); if (mm === 60) { h = (h + 1) % 24; mm = 0; } return (h < 10 ? '0' : '') + h + ':' + (mm < 10 ? '0' : '') + mm; }
 
-  /* ---------- theme: follows Tokyo's daylight until you choose ---------- */
+  /* ---------- theme: follows Kawaguchi's daylight until you choose ---------- */
   function applyTheme(t) {
     root.setAttribute('data-theme', t);
     var m = $('meta[name="theme-color"]:not([media])');
@@ -47,7 +47,7 @@
     store.set('theme', t); applyTheme(t);
     $$('.theme-btn').forEach(function (b) { b.title = tr('theme_choice', 'Theme: your choice'); });
   }
-  $$('.theme-btn').forEach(function (b) { b.addEventListener('click', toggleTheme); b.title = store.get('theme') ? tr('theme_choice', 'Theme: your choice') : tr('theme_follow', 'Theme follows Tokyo’s daylight — click to choose'); });
+  $$('.theme-btn').forEach(function (b) { b.addEventListener('click', toggleTheme); b.title = store.get('theme') ? tr('theme_choice', 'Theme: your choice') : tr('theme_follow', 'Theme follows Kawaguchi’s daylight — click to choose'); });
   setInterval(autoTheme, 60000);
 
   /* ---------- sky glow, daylight readout, sun arc ---------- */
@@ -121,7 +121,7 @@
     d.addEventListener('mouseleave', function () { if (cr) cr.classList.remove('on'); });
   }
 
-  /* ---------- Tokyo clock ---------- */
+  /* ---------- JST clock ---------- */
   var clocks = $$('[data-clock]');
   if (clocks.length) {
     var fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
@@ -129,7 +129,7 @@
     tick(); setInterval(tick, 1000);
   }
 
-  /* ---------- live wind (Open-Meteo, Tokyo) ---------- */
+  /* ---------- live wind (Open-Meteo, Kawaguchi) ---------- */
   var BEAUFORT_KMH = [1, 5, 11, 19, 28, 38, 49, 61, 74, 88, 102, 117, 1e9];
   var BEAUFORT = T.beaufort || [
     ['Calm', 'smoke rises vertically.'], ['Light air', 'smoke drifts, wind vanes stay still.'], ['Light breeze', 'wind felt on the face; leaves rustle.'],
@@ -156,18 +156,18 @@
     setText('[data-bf-n]', 'F' + b);
     setText('[data-bf-name]', BEAUFORT[b][0]);
     setText('[data-bf-desc]', BEAUFORT[b][1]);
-    setText('[data-bf-note]', isLive ? tr('live_note', 'Live — this page’s breeze follows Tokyo’s wind') : tr('live_fail', 'Live wind unavailable — showing a default breeze'));
+    setText('[data-bf-note]', isLive ? tr('live_note', 'Live — this page’s breeze follows Kawaguchi’s wind') : tr('live_fail', 'Live wind unavailable — showing a default breeze'));
     if (manual) return;
     $$('.rose').forEach(function (r) { r.style.setProperty('--deg', dir + 'deg'); });
     $$('[data-rose-dir]').forEach(function (n) { n.textContent = comp + ' ' + dir + '°'; });
     if (window.WIND) window.WIND.setWind(dir, spd);
   }
   (function fetchWind() {
-    var KEY = 'tokyo-wx', cached = null;
+    var KEY = 'kawaguchi-wx', cached = null;
     try { cached = JSON.parse(sessionStorage.getItem(KEY) || 'null'); } catch (e) {}
     if (cached && Date.now() - cached.t < 10 * 60 * 1000) { applyWind(cached.c, true); return; }
     if (!window.fetch) return;
-    var url = 'https://api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&current=temperature_2m,wind_speed_10m,wind_direction_10m,weather_code&timezone=Asia%2FTokyo';
+    var url = 'https://api.open-meteo.com/v1/forecast?latitude=35.8078&longitude=139.7242&current=temperature_2m,wind_speed_10m,wind_direction_10m,weather_code&timezone=Asia%2FTokyo';
     fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (j) {
       if (!j || !j.current || typeof j.current.wind_speed_10m !== 'number') throw new Error('shape');
       try { sessionStorage.setItem(KEY, JSON.stringify({ t: Date.now(), c: j.current })); } catch (e) {}
