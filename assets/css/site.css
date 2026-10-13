@@ -101,8 +101,8 @@ button { font: inherit; color: inherit; }
 }
 .skip:focus { transform: none; }
 
-/* ---------- wind canvas ---------- */
-#wind {
+/* ---------- falling leaves canvas ---------- */
+#leaves {
   position: fixed; inset: 0; z-index: 0;
   width: 100%; height: 100%;
   pointer-events: none;
@@ -115,7 +115,7 @@ button { font: inherit; color: inherit; }
   opacity: var(--sun-a, 0); transition: opacity 2s;
   background: radial-gradient(75vmax 60vmax at var(--sun-x, 80%) var(--sun-y, 20%), var(--sun-color, rgb(255, 214, 150)) 0%, transparent 62%);
 }
-html[data-field="off"] #wind { opacity: 0; }
+html[data-field="off"] #leaves { opacity: 0; }
 
 /* ---------- graticule (rulers) ---------- */
 .ruler { display: none; }
@@ -771,7 +771,7 @@ html[data-theme="dark"] .postcard .postmark { mix-blend-mode: screen; color: var
 }
 
 @media print {
-  #wind, .sky, .vane, .ruler, .cursor-readout, .nav-tools, .footer .tools { display: none !important; }
+  #leaves, .sky, .vane, .ruler, .cursor-readout, .nav-tools, .footer .tools { display: none !important; }
   .js .reveal { opacity: 1; transform: none; }
   .site { padding: 0; }
 }

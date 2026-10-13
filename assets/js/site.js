@@ -1,4 +1,4 @@
-/* site.js — behaviours: theme, graticule, JST clock + live wind, name gust, reveals, copy, shortcuts. */
+/* site.js — behaviours: theme, graticule, JST clock + live wind (leaves), name gust, reveals, copy, shortcuts. */
 (function () {
   'use strict';
   var d = document, root = d.documentElement;
@@ -85,7 +85,7 @@
   /* ---------- wind toggle ---------- */
   function setWindEnabled(on, persist) {
     root.setAttribute('data-field', on ? 'on' : 'off');
-    $$('[data-wind-toggle]').forEach(function (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.querySelector('span').textContent = on ? tr('wind_on', 'Wind on') : tr('wind_off', 'Wind off'); });
+    $$('[data-wind-toggle]').forEach(function (b) { b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.querySelector('span').textContent = on ? tr('wind_on', 'Leaves on') : tr('wind_off', 'Leaves off'); });
     if (window.WIND) window.WIND.setEnabled(on);
     if (persist) store.set('wind', on ? 'on' : 'off');
   }
@@ -156,7 +156,7 @@
     setText('[data-bf-n]', 'F' + b);
     setText('[data-bf-name]', BEAUFORT[b][0]);
     setText('[data-bf-desc]', BEAUFORT[b][1]);
-    setText('[data-bf-note]', isLive ? tr('live_note', 'Live — this page’s breeze follows Kawaguchi’s wind') : tr('live_fail', 'Live wind unavailable — showing a default breeze'));
+    setText('[data-bf-note]', isLive ? tr('live_note', 'Live — the leaves drift on Kawaguchi’s wind') : tr('live_fail', 'Live wind unavailable — showing a default breeze'));
     if (manual) return;
     $$('.rose').forEach(function (r) { r.style.setProperty('--deg', dir + 'deg'); });
     $$('[data-rose-dir]').forEach(function (n) { n.textContent = comp + ' ' + dir + '°'; });
@@ -355,7 +355,7 @@
     if (k >= '1' && k <= '9') { var l = links[parseInt(k, 10) - 1]; if (l) location.href = l.href; }
     else if (k === 'h' || k === '0') location.href = (window.SITE && window.SITE.alts && window.SITE.alts[window.SITE.lang]) || '/';
     else if (k === 't') toggleTheme();
-    else if (k === 'w') setWindEnabled(root.getAttribute('data-field') === 'off', true);
+    else if (k === 'l' || k === 'w') setWindEnabled(root.getAttribute('data-field') === 'off', true);
   });
 
   /* ---------- Goodreads shelves (grid widget, loaded without blocking the page) ---------- */

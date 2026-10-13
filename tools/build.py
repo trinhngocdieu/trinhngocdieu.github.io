@@ -119,7 +119,7 @@ def page_head(meta, title, mark, lede):
             f'<h1 class="page-title">{title}{m}</h1><p class="page-lede">{lede}</p></header>')
 
 def kbd(s):
-    for k in ('1', '5', 'H', 'T', 'W'):
+    for k in ('1', '5', 'H', 'T', 'L'):
         s = s.replace('{' + k + '}', f'<kbd>{k}</kbd>')
     return s
 
@@ -175,7 +175,7 @@ def shell(lang, page, *, title, desc, body, head_extra='', current=None, og_titl
 <a class="skip" href="#main">{site["skip"]}</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="ink" x="-6%" y="-6%" width="112%" height="112%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <div class="sky" aria-hidden="true"></div>
-<canvas id="wind" aria-hidden="true"></canvas>
+<canvas id="leaves" aria-hidden="true"></canvas>
 <div class="ruler ruler-corner" aria-hidden="true"></div>
 <div class="ruler ruler-x" aria-hidden="true"><i class="marker"></i></div>
 <div class="ruler ruler-y" aria-hidden="true"><i class="marker"></i></div>
@@ -220,7 +220,7 @@ def shell(lang, page, *, title, desc, body, head_extra='', current=None, og_titl
 </footer>
 </div>
 <div class="toast" role="status" aria-live="polite"></div>
-<script src="/assets/js/wind.js"></script>
+<script src="/assets/js/leaves.js"></script>
 <script src="/assets/js/site.js"></script>
 </body>
 </html>
