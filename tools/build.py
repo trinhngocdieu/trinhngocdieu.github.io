@@ -101,11 +101,12 @@ POSTMARK = ('<svg class="postmark" viewBox="0 0 100 100" aria-hidden="true"><def
 SUNARC = ('<svg class="sunarc" viewBox="0 0 320 136" role="img" aria-label="{aria}"><path class="arc" d="M60 110A100 100 0 0 1 260 110"/><line class="horizon" x1="0" y1="110" x2="320" y2="110"/>'
           '<g class="sun" transform="translate(160 10)"><circle class="glow" r="16"/><circle r="5"/></g><text class="t-rise" x="60" y="130" text-anchor="middle">↑ --:--</text><text class="t-set" x="260" y="130" text-anchor="middle">↓ --:--</text></svg>')
 
-def deck(P):
+def deck(P, skip=()):
     cards = [('cardgo.ai', 'https://cardgo.ai', '札'), ('unihongo.com', 'https://unihongo.com', '語'), ('chatluat.com', 'https://chatluat.com', '律')]
+    shown = [(i, c) for i, c in enumerate(cards) if c[0] not in skip]
     out = ['<div class="deck">']
-    for i, (name, url, glyph) in enumerate(cards):
-        out.append(f'<a class="card reveal" style="--d:{i*0.1:.1f}s" href="{url}" target="_blank" rel="noopener">'
+    for n, (i, (name, url, glyph)) in enumerate(shown):
+        out.append(f'<a class="card reveal" style="--d:{n*0.1:.1f}s" href="{url}" target="_blank" rel="noopener">'
                    f'<div class="top"><span>{P["kinds"][i].upper()} · <span lang="ja">{glyph}</span></span><span class="arrow" aria-hidden="true">↗</span></div>'
                    f'<div class="glyph" lang="ja" aria-hidden="true">{glyph}</div><div class="cut" aria-hidden="true"></div>'
                    f'<h3 class="title">{name}</h3><p class="sub">{P["taglines"][i]}</p></a>')
@@ -284,7 +285,7 @@ def home_body(lang):
 
 <section class="wrap section" aria-labelledby="proj-h">
   <div class="section-head reveal"><h2 id="proj-h">{H["projects_h"]}</h2><span class="meta"><a href="{href(lang, "projects")}">{H["all_projects"]}</a></span></div>
-  {deck(P)}
+  {deck(P, skip=('chatluat.com',))}
 </section>'''
 
 JSONLD = '''<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Trịnh Ngọc Diệu","alternateName":"Trinh Ngoc Dieu","url":"https://trinhngocdieu.com/","image":"https://trinhngocdieu.com/assets/img/portrait.jpg","email":"mailto:contact@trinhngocdieu.com","address":{"@type":"PostalAddress","addressLocality":"Saitama","addressCountry":"JP"},"workLocation":{"@type":"Place","name":"Tokyo","address":{"@type":"PostalAddress","addressLocality":"Tokyo","addressCountry":"JP"}},"sameAs":["https://www.facebook.com/trinhngocdieu","https://x.com/trinhngocdieu","https://www.linkedin.com/in/trinhngocdieu","https://github.com/trinhngocdieu","https://www.goodreads.com/user/show/34804458"]}</script>

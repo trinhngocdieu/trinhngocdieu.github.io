@@ -581,7 +581,8 @@ html[data-theme="dark"] .theme-btn .moon { display: block; }
 }
 .card:hover::before { opacity: 1; }
 .deck .card:nth-child(1) { --r: -3deg; --y: 10px; }
-.deck .card:nth-child(3) { --r: 3deg; --y: 10px; }
+.deck .card:nth-child(3),
+.deck .card:nth-child(2):last-child { --r: 3deg; --y: 10px; }
 .card:hover { transform: rotate(0deg) translateY(-14px) scale(1.02); border-color: var(--mute); z-index: 2; }
 .card .top { display: flex; justify-content: space-between; align-items: center; font: 500 12px/1 var(--font-mono); letter-spacing: .05em; color: var(--mute); }
 .card .top .arrow { color: var(--ink); font-size: 16px; transition: transform .4s var(--ease); }
