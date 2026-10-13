@@ -1,8 +1,9 @@
-/* leaves.js — autumn leaves on a 2D canvas (no dependencies).
- * Ginkgo for Tokyo, keyaki (zelkova) for Saitama, momiji for the season.
- * Each leaf falls like a pendulum, tumbles in 3D (a squashed x-scale shows its paler underside)
- * and drifts on Kawaguchi's live wind, set from site.js. The cursor brushes leaves aside;
- * scrolling moves near leaves faster than far ones. */
+/* leaves.js — falling momiji on a 2D canvas (no dependencies), after unihongo.com's header.
+ * Seven-lobed, toothed maple leaves in red-to-amber gradients, at three depths: small blurred
+ * ones far back, crisp ones in the middle, a few large soft ones up front. Each glides from
+ * side to side (slowest at the turns), leaning into the swing and either rocking or flipping
+ * right over as it slowly spins; the whole fall drifts on Kawaguchi's live wind, set from
+ * site.js. The cursor brushes leaves aside; scrolling moves near leaves faster than far ones. */
 (function () {
   'use strict';
   var canvas = document.getElementById('leaves');
@@ -15,106 +16,60 @@
   var ctx = canvas.getContext('2d');
   if (!ctx || !window.Path2D) { canvas.remove(); return; }
 
-  /* ---------- shapes (unit leaf: tip near y=-1, stem toward y=+1) ---------- */
-  function poly(p, pts) { p.moveTo(pts[0][0], pts[0][1]); for (var i = 1; i < pts.length; i++) p.lineTo(pts[i][0], pts[i][1]); p.closePath(); }
+  /* ---------- the leaf: unihongo's momiji, in a 48-unit box centred on the stem joint ---------- */
+  var OUTLINE = 'M0 0L-1.9 -0.8L-2.2 -0.1L-3.7 -0.4L-3.9 0.5L-5.3 0.5L-5.4 1.4L-6.6 1.7L-6.7 2.7L-7.7 3.2L-7.7 4.2L-8.6 6L-6.6 5.8L-5.6 6.1L-4.8 5.3L-3.8 5.6L-3.2 4.6L-2.3 4.8L-1.8 3.5L-0.9 3.6L-0.7 2.1L0.1 2L0 0ZM0 0L-1.2 -1.9L-2 -1.7L-3.2 -3L-4.1 -2.6L-5.3 -3.6L-6.2 -3L-7.5 -3.7L-8.3 -3L-9.6 -3.5L-10.5 -2.7L-11.8 -3L-12.7 -2.2L-14.9 -1.3L-12.9 0L-12.2 0.9L-10.8 0.9L-10.1 1.7L-8.7 1.5L-8 2.3L-6.6 1.9L-5.9 2.6L-4.5 1.8L-3.7 2.4L-2.3 1.3L-1.5 1.7L0 0ZM0 0L0.4 -2.2L-0.4 -2.5L-0.4 -4.3L-1.3 -4.6L-1.5 -6.2L-2.5 -6.4L-2.8 -7.9L-3.9 -8L-4.4 -9.3L-5.4 -9.4L-6.1 -10.6L-7.2 -10.7L-7.9 -11.8L-9 -11.8L-9.9 -12.8L-11 -12.8L-13.2 -13.7L-12.5 -11.4L-12.5 -10.3L-11.5 -9.4L-11.5 -8.3L-10.4 -7.5L-10.4 -6.4L-9.2 -5.8L-9.2 -4.7L-7.9 -4.1L-7.8 -3.1L-6.3 -2.7L-6.2 -1.7L-4.5 -1.5L-4.3 -0.6L-2.5 -0.5L-2.2 0.3L0 0ZM0 0L1.8 -1.3L1.4 -2.1L2.7 -3.5L2.2 -4.3L3.3 -5.6L2.7 -6.5L3.5 -7.8L2.9 -8.6L3.6 -9.9L2.9 -10.8L3.4 -12.1L2.7 -12.9L3 -14.2L2.3 -15L2.5 -16.4L1.7 -17.2L1.8 -18.5L1 -19.4L0 -21.5L-1 -19.4L-1.8 -18.5L-1.7 -17.2L-2.5 -16.4L-2.3 -15L-3 -14.2L-2.7 -12.9L-3.4 -12.1L-2.9 -10.8L-3.6 -9.9L-2.9 -8.6L-3.5 -7.8L-2.7 -6.5L-3.3 -5.6L-2.2 -4.3L-2.7 -3.5L-1.4 -2.1L-1.8 -1.3L0 0ZM0 0L2.2 0.3L2.5 -0.5L4.3 -0.6L4.5 -1.5L6.2 -1.7L6.3 -2.7L7.8 -3.1L7.9 -4.1L9.2 -4.7L9.2 -5.8L10.4 -6.4L10.4 -7.5L11.5 -8.3L11.5 -9.4L12.5 -10.3L12.5 -11.4L13.2 -13.7L11 -12.8L9.9 -12.8L9 -11.8L7.9 -11.8L7.2 -10.7L6.1 -10.6L5.4 -9.4L4.4 -9.3L3.9 -8L2.8 -7.9L2.5 -6.4L1.5 -6.2L1.3 -4.6L0.4 -4.3L0.4 -2.5L-0.4 -2.2L0 0ZM0 0L1.5 1.7L2.3 1.3L3.7 2.4L4.5 1.8L5.9 2.6L6.6 1.9L8 2.3L8.7 1.5L10.1 1.7L10.8 0.9L12.2 0.9L12.9 0L14.9 -1.3L12.7 -2.2L11.8 -3L10.5 -2.7L9.6 -3.5L8.3 -3L7.5 -3.7L6.2 -3L5.3 -3.6L4.1 -2.6L3.2 -3L2 -1.7L1.2 -1.9L0 0ZM0 0L-0.1 2L0.7 2.1L0.9 3.6L1.8 3.5L2.3 4.8L3.2 4.6L3.8 5.6L4.8 5.3L5.6 6.1L6.6 5.8L8.6 6L7.7 4.2L7.7 3.2L6.7 2.7L6.6 1.7L5.4 1.4L5.3 0.5L3.9 0.5L3.7 -0.4L2.2 -0.1L1.9 -0.8L0 0Z';
+  var BODY = new Path2D(OUTLINE);
+  BODY.moveTo(3.1, 0); BODY.arc(0, 0, 3.1, 0, Math.PI * 2);
+  var VEINS = new Path2D('M0 0L-7.6 5.3M0 0L-13.1 -1.2M0 0L-11.6 -12M0 0L0 -18.9M0 0L11.6 -12M0 0L13.1 -1.2M0 0L7.6 5.3');
+  var STEM = new Path2D('M0 1.5Q1 9 0.6 16');
+  var GRADIENTS = [
+    ['#ff5a4a', '#b3001b'], ['#ff7043', '#c62828'], ['#ff8c42', '#d84315'],
+    ['#ffa726', '#e65100'], ['#ffb300', '#ef6c00'], ['#e53935', '#8e0e0e']
+  ];
 
-  // momiji: five pointed lobes fanned around the stem, each with two small teeth per side
-  function maple() {
-    var lobes = 5, spread = 3.9, step = spread / (lobes - 1), pts = [[0, 0.3]];
-    for (var i = 0; i < lobes; i++) {
-      var t = i / (lobes - 1) - 0.5, a = -Math.PI / 2 + t * spread;
-      var ax = Math.cos(a), ay = Math.sin(a), len = 1 - Math.abs(t) * 0.55;
-      var tip = [ax * len, ay * len];
-      var n0 = i === 0 ? [0, 0.3] : [Math.cos(a - step / 2) * 0.42, Math.sin(a - step / 2) * 0.42];
-      var n1 = i === lobes - 1 ? [0, 0.3] : [Math.cos(a + step / 2) * 0.42, Math.sin(a + step / 2) * 0.42];
-      var at = function (p0, p1, f) { return [p0[0] + (p1[0] - p0[0]) * f, p0[1] + (p1[1] - p0[1]) * f]; };
-      var tooth = function (b) {                              // a small tooth, out from the lobe's axis and leaning toward its tip
-        var d = b[0] * ax + b[1] * ay, ox = b[0] - ax * d, oy = b[1] - ay * d, m = Math.hypot(ox, oy) || 1;
-        return [b[0] + ox / m * 0.08 + ax * 0.06, b[1] + oy / m * 0.08 + ay * 0.06];
-      };
-      [0.42, 0.72].forEach(function (f) { var b = at(n0, tip, f); pts.push(b, tooth(b)); });
-      pts.push(tip);
-      [0.28, 0.58].forEach(function (f) { var b = at(tip, n1, f); pts.push(tooth(b), b); });
-      if (i < lobes - 1) pts.push(n1);
-    }
-    var p = new Path2D(); poly(p, pts);
-    var v = new Path2D();
-    for (var j = 0; j < lobes; j++) {
-      var tt = j / (lobes - 1) - 0.5, aa = -Math.PI / 2 + tt * spread, ll = (1 - Math.abs(tt) * 0.55) * 0.82;
-      v.moveTo(0, 0.12); v.lineTo(Math.cos(aa) * ll, Math.sin(aa) * ll);
-    }
-    v.moveTo(0, 0.12); v.lineTo(0, 0.78);
-    return { body: p, veins: v };
-  }
-
-  // ichō: a fan with a notch in the middle of its outer edge, fine veins radiating from the stem
-  function ginkgo() {
-    var p = new Path2D();
-    p.moveTo(0, 0.32);
-    p.bezierCurveTo(-0.16, 0.12, -0.72, -0.18, -0.98, -0.42);
-    p.quadraticCurveTo(-0.66, -1.0, -0.13, -0.86);
-    p.lineTo(0, -0.58);
-    p.lineTo(0.13, -0.86);
-    p.quadraticCurveTo(0.66, -1.0, 0.98, -0.42);
-    p.bezierCurveTo(0.72, -0.18, 0.16, 0.12, 0, 0.32);
-    p.closePath();
-    var v = new Path2D();
-    for (var i = 0; i < 9; i++) {
-      var a = -Math.PI / 2 + (i / 8 - 0.5) * 1.95, r = i === 4 ? 0.0 : 0.82;
-      if (!r) continue;
-      v.moveTo(0, 0.26); v.lineTo(Math.cos(a) * r, Math.sin(a) * r * 0.95 + 0.04);
-    }
-    v.moveTo(0, 0.3); v.lineTo(0.02, 0.92);
-    return { body: p, veins: v };
-  }
-
-  // keyaki: ovate, pointed tip, finely toothed edge, straight side veins
-  function keyaki() {
-    var n = 9, right = [], left = [];
-    var w = function (t) { return 0.44 * Math.pow(Math.sin(Math.PI * Math.pow(t, 1.36)), 0.85); };
-    for (var i = 0; i <= n; i++) {
-      var t = i / n, y = -1 + t * 1.62, x = w(t);
-      right.push([x, y]); left.push([-x, y]);
-      if (i < n) {
-        var t2 = (i + 0.65) / n, y2 = -1 + t2 * 1.62, x2 = w(t2) + 0.055;
-        right.push([x2, y2 - 0.05]); left.push([-x2, y2 - 0.05]);
-      }
-    }
-    var p = new Path2D(); poly(p, right.concat(left.reverse()));
-    var v = new Path2D();
-    v.moveTo(0, -0.96); v.lineTo(0, 0.95);
-    for (var k = 1; k < 8; k++) {
-      var tk = k / 9, yk = -1 + tk * 1.62, xk = w(tk + 0.06) * 0.85;
-      v.moveTo(0, yk + 0.1); v.lineTo(xk, yk - 0.04);
-      v.moveTo(0, yk + 0.1); v.lineTo(-xk, yk - 0.04);
-    }
-    return { body: p, veins: v };
-  }
-
-  var SHAPES = { maple: maple(), ginkgo: ginkgo(), keyaki: keyaki() };
-  var KINDS = ['ginkgo', 'ginkgo', 'ginkgo', 'ginkgo', 'maple', 'maple', 'maple', 'keyaki', 'keyaki', 'keyaki'];
-
-  var PALETTES = {
-    light: {
-      maple: ['#c8341f', '#d9481c', '#b02a26', '#e0662a'],
-      ginkgo: ['#e8b520', '#efc232', '#d9a01a', '#e2a92a'],
-      keyaki: ['#c46a28', '#a8582a', '#d98a2b', '#8f4a24'],
-      under: '#f3e6cc', mix: 0.38, vein: 'rgba(60, 25, 10, .28)', alpha: [0.62, 0.96], shadow: 'rgba(14, 27, 46, .16)'
-    },
-    dark: {
-      maple: ['#ff5a3c', '#ff7442', '#e8473a', '#ff8a4a'],
-      ginkgo: ['#ffcc3d', '#f5b82a', '#ffd75c', '#f0a92a'],
-      keyaki: ['#e68a3c', '#d0743a', '#f0a040', '#c0662e'],
-      under: '#5a3a26', mix: 0.42, vein: 'rgba(20, 8, 0, .38)', alpha: [0.42, 0.88], shadow: null
-    }
+  // size: CSS px per 48-unit box; fall: px/s; flutter: seconds per glide (there and back); sway: px
+  var LAYERS = {
+    back: { size: [12, 17], fall: [16, 24], flutter: [2.2, 3.2], sway: [8, 14], alpha: 0.42, blur: 0.6, z: 0.4 },
+    mid: { size: [19, 29], fall: [26, 40], flutter: [2.8, 4.2], sway: [12, 24], alpha: 0.78, blur: 0, z: 0.7 },
+    near: { size: [36, 46], fall: [44, 58], flutter: [3.4, 4.8], sway: [18, 30], alpha: 0.3, blur: 1.3, z: 1 }
   };
-  var pal = PALETTES.light;
+  var TIP = 55 * Math.PI / 180;                             // how far a rocking leaf tips toward / away from the eye
 
-  function hex(c) { return [parseInt(c.slice(1, 3), 16), parseInt(c.slice(3, 5), 16), parseInt(c.slice(5, 7), 16)]; }
-  function mix(a, b, k) { var x = hex(a), y = hex(b); return 'rgb(' + x.map(function (v, i) { return Math.round(v + (y[i] - v) * k); }).join(',') + ')'; }
+  function rand(r) { return r[0] + Math.random() * (r[1] - r[0]); }
+
+  /* ---------- sprites: each gradient at each depth, drop shadow and blur baked in ---------- */
+  var RES = 2.4, PX = Math.ceil(56 * RES);                  // units -28..28 at 2.4 sprite px per unit
+  function sprite(colors, layer) {
+    var perCss = RES * 48 / ((layer.size[0] + layer.size[1]) / 2);  // sprite px per CSS px at this depth
+    var a = document.createElement('canvas'); a.width = a.height = PX;
+    var g = a.getContext('2d');
+    g.setTransform(RES, 0, 0, RES, PX / 2, PX / 2);
+    // SVG's objectBoundingBox gradient (0,0 → 1,1) over the outline's box
+    var x0 = -14.9, y0 = -21.5, w = 29.8, h = 27.5, k = 2 / (1 / (w * w) + 1 / (h * h));
+    var grad = g.createLinearGradient(x0, y0, x0 + k / w, y0 + k / h);
+    grad.addColorStop(0, colors[0]); grad.addColorStop(1, colors[1]);
+    g.fillStyle = grad; g.fill(BODY);
+    g.lineCap = 'round';
+    g.strokeStyle = 'rgba(60, 5, 5, .32)'; g.lineWidth = 0.55; g.stroke(VEINS);
+    g.strokeStyle = 'rgba(110, 30, 15, .8)'; g.lineWidth = 1; g.stroke(STEM);
+
+    var b = document.createElement('canvas'); b.width = b.height = PX;
+    var gb = b.getContext('2d');
+    gb.shadowColor = 'rgba(60, 10, 0, .2)'; gb.shadowOffsetY = perCss; gb.shadowBlur = perCss;
+    gb.drawImage(a, 0, 0);
+    if (!layer.blur || !('filter' in gb)) return b;
+
+    var c = document.createElement('canvas'); c.width = c.height = PX;
+    var gc = c.getContext('2d');
+    gc.filter = 'blur(' + (layer.blur * perCss).toFixed(2) + 'px)';
+    gc.drawImage(b, 0, 0);
+    return c;
+  }
+  var SPRITES = {};
+  Object.keys(LAYERS).forEach(function (n) { SPRITES[n] = GRADIENTS.map(function (c) { return sprite(c, LAYERS[n]); }); });
 
   /* ---------- state ---------- */
-  var W = 0, H = 0, dpr = 1, leaves = [];
+  var W = 0, H = 0, dpr = 1, leaves = [], dim = 1;
   var wind = { dir: 225, speed: 10, x: 0, y: 0, tx: 0, ty: 0 };
   var gust = { v: 0, t: 0, dur: 0, peak: 0, next: 4 };
   var mouse = { x: -1e4, y: -1e4, vx: 0, vy: 0, t: 0 };
@@ -122,47 +77,51 @@
 
   function fromWind() {
     var phi = wind.dir * Math.PI / 180, s = Math.min(wind.speed, 45) / 45;
-    var mag = 14 + s * 120;                                   // px / s
+    var mag = 6 + s * 70;                                     // px / s
     wind.tx = -Math.sin(phi) * mag;                           // toward-direction, x east
     wind.ty = Math.cos(phi) * mag * 0.25;                     // a north wind (from 0°) pushes leaves down the screen
   }
 
-  function color(L) {
-    var list = pal[L.kind];
-    L.front = list[L.ci % list.length];
-    L.back = mix(L.front, pal.under, pal.mix);
-    L.alpha = pal.alpha[0] + (pal.alpha[1] - pal.alpha[0]) * (L.z - 0.35) / 0.65;
+  // depth by slot, as on unihongo: 3 near and 6 back in every 19; small screens keep the middle only
+  function layerOf(i) {
+    if (W < 968) return 'mid';
+    var j = i % 19;
+    return j === 3 || j === 9 || j === 15 ? 'near' : j % 3 === 1 ? 'back' : 'mid';
   }
 
   function spawn(L, anywhere) {
-    L.z = 0.35 + Math.random() * 0.65;
-    L.kind = KINDS[(Math.random() * KINDS.length) | 0];
-    L.ci = (Math.random() * 4) | 0;
-    L.size = (L.kind === 'maple' ? 12 : L.kind === 'ginkgo' ? 11 : 10) + 17 * L.z;
-    L.fall = 24 + 34 * L.z + Math.random() * 10;
-    L.phase = Math.random() * Math.PI * 2;
-    L.freq = 1.1 + Math.random() * 1.1;
-    L.amp = 22 + Math.random() * 46;
-    L.flip = Math.random() * Math.PI * 2;
-    L.spin = (0.6 + Math.random() * 2.2) * (Math.random() < 0.5 ? -1 : 1);
-    L.base = Math.random() * Math.PI * 2;
-    L.turn = (Math.random() - 0.5) * 0.8;
+    var S = LAYERS[L.layer];
+    L.z = S.z;
+    L.alpha = S.alpha;
+    L.img = SPRITES[L.layer][(Math.random() * GRADIENTS.length) | 0];
+    L.size = rand(S.size);
+    L.fall = rand(S.fall);
+    L.flutter = rand(S.flutter);
+    L.sway = rand(S.sway);
+    L.tilt = (16 + Math.random() * 14) * Math.PI / 180;
+    L.flip = Math.random() < 0.4;
+    L.rot = Math.random() * Math.PI * 2;
+    L.spin = Math.PI * 2 / (10 + Math.random() * 18) * (Math.random() < 0.5 ? -1 : 1);
+    L.t = Math.random();
     L.kick = 0;
     var T = (H + 160) / L.fall, drift = wind.x * L.z * T * 0.8;
     L.x = Math.random() * (W + 160) - 80 - (anywhere ? drift * Math.random() : drift);
     L.y = anywhere ? Math.random() * H : -40 - Math.random() * 120;
     L.vx = wind.x * L.z; L.vy = L.fall;
-    color(L);
   }
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = window.innerWidth; H = window.innerHeight;
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
-    var n = Math.max(10, Math.min(34, Math.round(W * H / 42000)));
-    while (leaves.length < n) { var L = {}; spawn(L, true); leaves.push(L); }
+    var n = Math.max(8, Math.min(30, Math.round(W * H / 45000)));
+    leaves.sort(function (a, b) { return a.slot - b.slot; });
     if (leaves.length > n) leaves.length = n;
-    leaves.sort(function (a, b) { return a.z - b.z; });
+    for (var i = 0; i < n; i++) {
+      var L = leaves[i] || (leaves[i] = { slot: i }), layer = layerOf(i);
+      if (L.layer !== layer) { L.layer = layer; spawn(L, true); }
+    }
+    leaves.sort(function (a, b) { return a.z - b.z; });     // far ones first, near ones over them
   }
 
   /* ---------- simulation ---------- */
@@ -182,23 +141,20 @@
     var ease = Math.min(1, dt * 0.8);
     wind.x += (wind.tx - wind.x) * ease; wind.y += (wind.ty - wind.y) * ease;
     var gx = wind.x * (1 + gust.v * 1.5) + (Math.abs(wind.x) < 20 ? gust.v * 30 : 0);
-    var follow = Math.min(1, dt * 1.8);
+    var follow = Math.min(1, dt * 1.2);
     mouse.vx *= Math.pow(0.02, dt); mouse.vy *= Math.pow(0.02, dt);
     for (var i = 0; i < leaves.length; i++) {
       var L = leaves[i];
-      L.phase += L.freq * dt;
-      var c = Math.cos(L.phase);
-      var vx = gx * L.z + L.amp * c;                                   // pendulum sway on top of the wind
-      var vy = L.fall * (0.5 + 0.5 * Math.abs(c)) + wind.y * L.z;     // slows at the top of each swing
-      L.vx += (vx - L.vx) * follow; L.vy += (vy - L.vy) * follow;
+      L.t += dt * (1 + gust.v * 0.5 + L.kick * 0.4) / L.flutter;
+      L.vx += (gx * L.z - L.vx) * follow;
+      L.vy += (L.fall + wind.y * L.z - L.vy) * follow;
       if (mouse.t) {
         var dx = L.x - mouse.x, dy = L.y - mouse.y, f = Math.exp(-(dx * dx + dy * dy) / (2 * 70 * 70));
         if (f > 0.02) { L.vx += mouse.vx * f * dt * 5; L.vy += mouse.vy * f * dt * 5; L.kick = Math.min(4, L.kick + f * dt * 8); }
       }
       L.kick *= Math.pow(0.25, dt);
       L.x += L.vx * dt; L.y += L.vy * dt;
-      L.flip += L.spin * dt * (1 + gust.v * 1.2 + L.kick);
-      L.base += L.turn * dt;
+      L.rot += L.spin * dt * (1 + gust.v + L.kick);
       if (L.y > H + 60 || L.y < -260 || L.x < -W * 0.8 - 200 || L.x > W * 1.8 + 200) spawn(L, false);
     }
   }
@@ -206,19 +162,15 @@
   function draw() {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
     for (var i = 0; i < leaves.length; i++) {
-      var L = leaves[i], S = SHAPES[L.kind];
-      var fx = Math.cos(L.flip), sx = (Math.abs(fx) < 0.06 ? (fx < 0 ? -0.06 : 0.06) : fx) * L.size, sy = L.size;
-      var r = L.base + 0.55 * Math.sin(L.phase), cr = Math.cos(r), sr = Math.sin(r);
-      ctx.setTransform(dpr * cr * sx, dpr * sr * sx, -dpr * sr * sy, dpr * cr * sy, dpr * L.x, dpr * L.y);
-      ctx.globalAlpha = L.alpha;
-      if (pal.shadow && L.z > 0.78) { ctx.shadowColor = pal.shadow; ctx.shadowBlur = 8 * dpr; ctx.shadowOffsetY = 4 * dpr; }
-      ctx.fillStyle = fx >= 0 ? L.front : L.back;
-      ctx.fill(S.body);
-      ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
-      ctx.strokeStyle = pal.vein; ctx.lineWidth = 1 / L.size;
-      ctx.stroke(S.veins);
+      var L = leaves[i], a = Math.PI * 2 * L.t, s2 = Math.sin(2 * a);
+      var x = L.x - L.sway * Math.cos(a), y = L.y + L.sway * 0.22 * s2;   // glide, dipping mid-swing
+      var tip = L.flip ? Math.PI / 2 + a + 0.5 * s2 : TIP * Math.cos(a);  // rotateX: rock, or tumble right over
+      var q = Math.cos(tip), r = L.rot + L.tilt * Math.sin(a), cr = Math.cos(r), sr = Math.sin(r);
+      var k = dpr * L.size / 48 / RES;
+      ctx.setTransform(k * cr, k * q * sr, -k * sr, k * q * cr, dpr * x, dpr * y);
+      ctx.globalAlpha = L.alpha * dim;
+      ctx.drawImage(L.img, -PX / 2, -PX / 2);
     }
     ctx.globalAlpha = 1;
   }
@@ -272,8 +224,7 @@
     fromWind();
   };
   api.setTheme = function () {
-    pal = document.documentElement.getAttribute('data-theme') === 'dark' ? PALETTES.dark : PALETTES.light;
-    leaves.forEach(color);
+    dim = document.documentElement.getAttribute('data-theme') === 'dark' ? 0.85 : 1;
     if (!running) draw();
   };
   api.setEnabled = function (on) {

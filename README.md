@@ -17,7 +17,7 @@ vi/ ja/ ko/ zh-hant/ zh-hans/                                   the same pages i
 404.html              Not-found page (served by GitHub Pages)
 project/ book/ post/ message/   redirects from the old URLs
 assets/css/site.css   All styles (design tokens at the top; dark theme under html[data-theme="dark"])
-assets/js/leaves.js   Falling autumn leaves on a 2D canvas (ginkgo, keyaki, momiji) drifting on the live wind; exposes window.WIND
+assets/js/leaves.js   Falling momiji (after unihongo.com) on a 2D canvas, drifting on the live wind; exposes window.WIND
 assets/js/site.js     Theme (follows Kawaguchi daylight), rulers, clock, live weather, sun arc, compass steering, languages, Goodreads shelves, X posts
 assets/img/           portrait.jpg, og.jpg, icon-192.png
 test/                 unrelated video-player test page, left as-is
